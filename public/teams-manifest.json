@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "f8d9c7b6-5432-10aa-1234-567890abcdef",
+  "packageName": "com.dexus.reitq1calendar",
+  "developer": {
+    "name": "Dexus",
+    "websiteUrl": "https://www.dexus.com",
+    "privacyUrl": "https://www.dexus.com",
+    "termsOfUseUrl": "https://www.dexus.com"
+  },
+  "icons": {
+    "color": "teams-color.png",
+    "outline": "teams-outline.png"
+  },
+  "name": {
+    "short": "REIT Q1 Calendar",
+    "full": "North American REIT Q1 2026 Earnings Calendar"
+  },
+  "description": {
+    "short": "Q1 2026 REIT earnings dates, calls, and reviewer tracking.",
+    "full": "North American REIT Q1 2026 earnings calendar with live reviewer toggles, filters, Seeking Alpha and IR links, and an ICS subscription feed."
+  },
+  "accentColor": "#1C3F60",
+  "staticTabs": [
+    {
+      "entityId": "reit-q1-2026-calendar",
+      "name": "Calendar",
+      "contentUrl": "https://REPLACE_WITH_YOUR_VERCEL_URL",
+      "websiteUrl": "https://REPLACE_WITH_YOUR_VERCEL_URL",
+      "scopes": ["personal"]
+    }
+  ],
+  "validDomains": ["REPLACE_WITH_YOUR_VERCEL_HOSTNAME"]
+}
