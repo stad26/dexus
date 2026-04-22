@@ -11,6 +11,13 @@ type OverrideRow = {
   call_date: string | null;
   status: "CONF" | "EST" | null;
   notes: string | null;
+  release_date_d?: string | null;
+  release_status?: "CONF" | "EST" | null;
+  release_notes?: string | null;
+  call_date_d?: string | null;
+  call_time?: string | null; // HH:MM:SS
+  call_tz?: "ET" | "CT" | "PT" | null;
+  call_status?: "CONF" | "EST" | null;
 };
 
 function releaseDateWithNotesToUtcRange(releaseDate: string, notes: string) {
@@ -64,12 +71,29 @@ export async function GET(request: Request) {
   const rows = REIT_ROWS.map((r) => {
     const o = overrides[r.ticker];
     if (!o) return r;
+    // If structured release fields exist, format them into the legacy string fields used by the UI/ICS.
+    const releaseDate =
+      o.release_date_d
+        ? DateTime.fromISO(o.release_date_d, { zone: "utc" }).toFormat("LLL d, yyyy")
+        : o.release_date ?? r.releaseDate;
+
+    const releaseNotes = o.release_notes ?? o.notes ?? r.notes;
+
+    let callDate = o.call_date ?? r.callDate;
+    if (o.call_date_d && o.call_time) {
+      const tz = o.call_tz ?? "ET";
+      const dt = DateTime.fromISO(o.call_date_d, { zone: "utc" });
+      const dateStr = dt.isValid ? dt.toFormat("LLL d, yyyy") : o.call_date_d;
+      const t = DateTime.fromFormat(o.call_time, "HH:mm:ss", { zone: "utc" });
+      const timeStr = t.isValid ? t.toFormat("h:mma").toLowerCase() : o.call_time;
+      callDate = `${dateStr}, ${timeStr} ${tz}`;
+    }
     return {
       ...r,
-      releaseDate: o.release_date ?? r.releaseDate,
-      callDate: o.call_date ?? r.callDate,
-      status: o.status ?? r.status,
-      notes: o.notes ?? r.notes,
+      releaseDate,
+      callDate,
+      status: o.release_status ?? o.status ?? r.status,
+      notes: releaseNotes,
     };
   });
 

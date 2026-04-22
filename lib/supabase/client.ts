@@ -9,10 +9,21 @@ export type ReitReviewRow = {
 
 export type ReitEventOverrideRow = {
   ticker: string;
+  // legacy (freeform text)
   release_date: string | null;
   call_date: string | null;
   status: "CONF" | "EST" | null;
   notes: string | null;
+
+  // v2 structured fields
+  release_date_d?: string | null; // YYYY-MM-DD
+  release_status?: "CONF" | "EST" | null;
+  release_notes?: string | null;
+  call_date_d?: string | null; // YYYY-MM-DD
+  call_time?: string | null; // HH:MM:SS
+  call_tz?: "ET" | "CT" | "PT" | null;
+  call_status?: "CONF" | "EST" | null;
+  call_notes?: string | null;
   updated_at?: string;
 };
 

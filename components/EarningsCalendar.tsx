@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { REIT_ROWS } from "@/lib/reits";
 import { SECTOR_LABELS } from "@/lib/sector-labels";
 import { seekingAlphaUrl } from "@/lib/links";
+import { formatDateMdyFromIso, formatTimeAmPmFromHms, tzLabel } from "@/lib/format";
 import {
   getSupabaseBrowser,
   eventOverridesToMap,
@@ -15,6 +16,8 @@ import type { ReitRow, ReviewerId, ReviewFlags } from "@/lib/types";
 import { EMPTY_REVIEW } from "@/lib/types";
 
 const LOCAL_STORAGE_KEY = "dexus_reit_q1_2026_review";
+
+type UiRow = ReitRow & { callStatus?: "CONF" | "EST" | null };
 
 const COL_TO_SORT: Record<number, keyof ReitRow | null> = {
   1: "name",
@@ -205,16 +208,29 @@ export function EarningsCalendar() {
     [revFilters],
   );
 
-  const mergedRows = useMemo(() => {
+  const mergedRows = useMemo<UiRow[]>(() => {
     return ordered.map((r) => {
       const o = overrides[r.ticker];
       if (!o) return r;
+      // Prefer structured v2 overrides when present; else fall back to legacy text fields.
+      const releaseDate =
+        o.release_date_d ? formatDateMdyFromIso(o.release_date_d) : o.release_date ?? r.releaseDate;
+      const releaseStatus = o.release_status ?? o.status ?? r.status;
+      const releaseNotes = o.release_notes ?? o.notes ?? r.notes;
+
+      const callDate =
+        o.call_date_d && o.call_time
+          ? `${formatDateMdyFromIso(o.call_date_d)}, ${formatTimeAmPmFromHms(o.call_time)} ${tzLabel(o.call_tz)}`
+          : o.call_date ?? r.callDate;
+
+      const callStatus = o.call_status ?? null;
       return {
         ...r,
-        releaseDate: o.release_date ?? r.releaseDate,
-        callDate: o.call_date ?? r.callDate,
-        status: o.status ?? r.status,
-        notes: o.notes ?? r.notes,
+        releaseDate,
+        callDate,
+        status: releaseStatus,
+        notes: releaseNotes,
+        callStatus,
       };
     });
   }, [ordered, overrides]);
@@ -251,17 +267,27 @@ export function EarningsCalendar() {
   }, [mergedRows, reviewMap]);
 
   const [editing, setEditing] = useState<ReitRow | null>(null);
-  const [editRelease, setEditRelease] = useState("");
-  const [editCall, setEditCall] = useState("");
-  const [editStatus, setEditStatus] = useState<"CONF" | "EST">("EST");
-  const [editNotes, setEditNotes] = useState("");
+  const [editReleaseDate, setEditReleaseDate] = useState(""); // YYYY-MM-DD
+  const [editReleaseStatus, setEditReleaseStatus] = useState<"CONF" | "EST">("EST");
+  const [editReleaseNotes, setEditReleaseNotes] = useState("");
+
+  const [editCallDate, setEditCallDate] = useState(""); // YYYY-MM-DD
+  const [editCallTime, setEditCallTime] = useState(""); // HH:MM
+  const [editCallTz, setEditCallTz] = useState<"ET" | "CT" | "PT">("ET");
+  const [editCallStatus, setEditCallStatus] = useState<"CONF" | "EST">("EST");
 
   const startEdit = (row: ReitRow) => {
     setEditing(row);
-    setEditRelease(row.releaseDate);
-    setEditCall(row.callDate);
-    setEditStatus(row.status);
-    setEditNotes(row.notes);
+    // Best-effort: if row came from overrides, prefer those stored values from overrides map.
+    const o = overrides[row.ticker];
+    setEditReleaseDate(o?.release_date_d ?? "");
+    setEditReleaseStatus((o?.release_status ?? row.status) as "CONF" | "EST");
+    setEditReleaseNotes(o?.release_notes ?? row.notes ?? "");
+
+    setEditCallDate(o?.call_date_d ?? "");
+    setEditCallTime(o?.call_time ? o.call_time.slice(0, 5) : "");
+    setEditCallTz((o?.call_tz ?? "ET") as "ET" | "CT" | "PT");
+    setEditCallStatus((o?.call_status ?? "EST") as "CONF" | "EST");
   };
 
   const saveEdit = async () => {
@@ -269,10 +295,24 @@ export function EarningsCalendar() {
     const ticker = editing.ticker;
     const payload: ReitEventOverrideRow = {
       ticker,
-      release_date: editRelease.trim() || null,
-      call_date: editCall.trim() || null,
-      status: editStatus,
-      notes: editNotes.trim() || null,
+      // legacy fields (kept for backwards compatibility; we’ll also populate these for display)
+      release_date: editReleaseDate ? formatDateMdyFromIso(editReleaseDate) : null,
+      call_date:
+        editCallDate && editCallTime
+          ? `${formatDateMdyFromIso(editCallDate)}, ${editCallTime} ${editCallTz}`
+          : null,
+      status: editReleaseStatus,
+      notes: editReleaseNotes.trim() || null,
+
+      // structured v2
+      release_date_d: editReleaseDate || null,
+      release_status: editReleaseStatus,
+      release_notes: editReleaseNotes.trim() || null,
+      call_date_d: editCallDate || null,
+      call_time: editCallTime ? `${editCallTime}:00` : null,
+      call_tz: editCallTz,
+      call_status: editCallStatus,
+      call_notes: null,
     };
 
     if (!supabase) {
@@ -594,7 +634,14 @@ export function EarningsCalendar() {
                   <span className={`conf-dot ${dotClass}`} />
                   {r.releaseDate.replace("★", "")}
                 </td>
-                <td className="mono muted">{r.callDate}</td>
+                <td className="mono muted">
+                  {r.callDate}{" "}
+                  {r.callStatus ? (
+                    <span className={r.callStatus === "CONF" ? "badge-c" : "badge-e"}>
+                      {r.callStatus}
+                    </span>
+                  ) : null}
+                </td>
                 <td className="exch">{r.exchange}</td>
                 <td className="mono ticker">{r.ticker}</td>
                 <td>
@@ -672,39 +719,73 @@ export function EarningsCalendar() {
                 Release date
                 <input
                   className="modal-input"
-                  value={editRelease}
-                  onChange={(e) => setEditRelease(e.target.value)}
-                  placeholder="Apr 16, 2026"
+                  type="date"
+                  value={editReleaseDate}
+                  onChange={(e) => setEditReleaseDate(e.target.value)}
                 />
               </label>
               <label className="modal-label">
-                Earnings call
-                <input
-                  className="modal-input"
-                  value={editCall}
-                  onChange={(e) => setEditCall(e.target.value)}
-                  placeholder="Apr 16, 2026, 5:00p"
-                />
-              </label>
-              <label className="modal-label">
-                Status
+                Release status
                 <select
                   className="modal-input"
-                  value={editStatus}
-                  onChange={(e) => setEditStatus(e.target.value as "CONF" | "EST")}
+                  value={editReleaseStatus}
+                  onChange={(e) =>
+                    setEditReleaseStatus(e.target.value as "CONF" | "EST")
+                  }
                 >
                   <option value="CONF">CONF</option>
                   <option value="EST">EST</option>
                 </select>
               </label>
               <label className="modal-label">
-                Notes
+                Release notes
                 <input
                   className="modal-input"
-                  value={editNotes}
-                  onChange={(e) => setEditNotes(e.target.value)}
+                  value={editReleaseNotes}
+                  onChange={(e) => setEditReleaseNotes(e.target.value)}
                   placeholder="After close"
                 />
+              </label>
+              <label className="modal-label">
+                Earnings call date
+                <input
+                  className="modal-input"
+                  type="date"
+                  value={editCallDate}
+                  onChange={(e) => setEditCallDate(e.target.value)}
+                />
+              </label>
+              <label className="modal-label">
+                Earnings call time
+                <input
+                  className="modal-input"
+                  type="time"
+                  value={editCallTime}
+                  onChange={(e) => setEditCallTime(e.target.value)}
+                />
+              </label>
+              <label className="modal-label">
+                Earnings call timezone
+                <select
+                  className="modal-input"
+                  value={editCallTz}
+                  onChange={(e) => setEditCallTz(e.target.value as "ET" | "CT" | "PT")}
+                >
+                  <option value="ET">ET</option>
+                  <option value="CT">CT</option>
+                  <option value="PT">PT</option>
+                </select>
+              </label>
+              <label className="modal-label">
+                Earnings call status
+                <select
+                  className="modal-input"
+                  value={editCallStatus}
+                  onChange={(e) => setEditCallStatus(e.target.value as "CONF" | "EST")}
+                >
+                  <option value="CONF">CONF</option>
+                  <option value="EST">EST</option>
+                </select>
               </label>
             </div>
 
