@@ -1,14 +1,27 @@
 import type { ReitRow } from "@/lib/types";
-import { releaseDateToYyyymmdd } from "@/lib/parse-release-date";
 
 function escapeText(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/;/g, "\\;").replace(/,/g, "\\,");
 }
 
+export type IcsEvent = {
+  uid: string;
+  summary: string;
+  description: string;
+  /** YYYYMMDD (all-day) */
+  date?: string;
+  /** YYYYMMDDTHHMMSSZ (timed) */
+  dtstartUtc?: string;
+  /** YYYYMMDDTHHMMSSZ (timed) */
+  dtendUtc?: string;
+};
+
 export function buildEarningsIcsCalendar(opts: {
   rows: ReitRow[];
   calendarName: string;
   feedUrl: string;
+  /** Optional mapper to generate timed events; if omitted, caller can prebuild events. */
+  toEvent?: (row: ReitRow) => IcsEvent | null;
 }): string {
   const now = new Date();
   const dtstamp =
@@ -28,24 +41,20 @@ export function buildEarningsIcsCalendar(opts: {
   ];
 
   for (const row of opts.rows) {
-    const ymd = releaseDateToYyyymmdd(row.releaseDate);
-    if (!ymd) continue;
-    const uid = `reit-q1-2026-release-${row.ticker.replace(/[^A-Za-z0-9.-]/g, "")}@dexus-reit-calendar`;
-    const statusLabel = row.status === "CONF" ? "Confirmed" : "Estimated";
-    const summary = `${row.ticker} — Q1 2026 earnings (${statusLabel})`;
-    const descParts = [
-      row.name,
-      `Release: ${row.releaseDate.replace(/★/g, "")}`,
-      `Call: ${row.callDate}`,
-      `Exchange: ${row.exchange}`,
-      `Notes: ${row.notes}`,
-    ];
-    const description = escapeText(descParts.join("\\n")).slice(0, 900);
+    const ev = opts.toEvent?.(row);
+    if (!ev) continue;
 
-    lines.push("BEGIN:VEVENT", `UID:${uid}`, `DTSTAMP:${dtstamp}`);
-    lines.push(`DTSTART;VALUE=DATE:${ymd}`);
-    lines.push(`SUMMARY:${escapeText(summary)}`);
-    lines.push(`DESCRIPTION:${description}`);
+    lines.push("BEGIN:VEVENT", `UID:${ev.uid}`, `DTSTAMP:${dtstamp}`);
+    if (ev.dtstartUtc && ev.dtendUtc) {
+      lines.push(`DTSTART:${ev.dtstartUtc}`);
+      lines.push(`DTEND:${ev.dtendUtc}`);
+    } else if (ev.date) {
+      lines.push(`DTSTART;VALUE=DATE:${ev.date}`);
+    } else {
+      continue;
+    }
+    lines.push(`SUMMARY:${escapeText(ev.summary)}`);
+    lines.push(`DESCRIPTION:${escapeText(ev.description).slice(0, 900)}`);
     lines.push("TRANSP:TRANSPARENT", "END:VEVENT");
   }
 

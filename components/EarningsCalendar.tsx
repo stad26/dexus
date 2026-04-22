@@ -6,11 +6,15 @@ import { SECTOR_LABELS } from "@/lib/sector-labels";
 import { seekingAlphaUrl } from "@/lib/links";
 import {
   getSupabaseBrowser,
+  eventOverridesToMap,
   reviewRowsToMap,
+  type ReitEventOverrideRow,
   type ReitReviewRow,
 } from "@/lib/supabase/client";
 import type { ReitRow, ReviewerId, ReviewFlags } from "@/lib/types";
 import { EMPTY_REVIEW } from "@/lib/types";
+
+const LOCAL_STORAGE_KEY = "dexus_reit_q1_2026_review";
 
 const COL_TO_SORT: Record<number, keyof ReitRow | null> = {
   1: "name",
@@ -27,9 +31,38 @@ function getRev(map: Record<string, ReviewFlags>, ticker: string): ReviewFlags {
   return map[ticker] ?? { ...EMPTY_REVIEW };
 }
 
+function loadLocalReview(): Record<string, ReviewFlags> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Record<string, ReviewFlags>;
+    return parsed ?? {};
+  } catch {
+    return {};
+  }
+}
+
+function saveLocalReview(map: Record<string, ReviewFlags>) {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(map));
+  } catch {
+    // ignore
+  }
+}
+
 export function EarningsCalendar() {
   const supabase = useMemo(() => getSupabaseBrowser(), []);
-  const [reviewMap, setReviewMap] = useState<Record<string, ReviewFlags>>({});
+  const [reviewMap, setReviewMap] = useState<Record<string, ReviewFlags>>(() =>
+    loadLocalReview(),
+  );
+  const [overrides, setOverrides] = useState<Record<string, ReitEventOverrideRow>>(
+    {},
+  );
+  const [supabaseError, setSupabaseError] = useState<string | null>(null);
+  const [origin] = useState<string>(() =>
+    typeof window === "undefined" ? "" : window.location.origin,
+  );
   const [revFilters, setRevFilters] = useState<Record<ReviewerId, boolean>>({
     DK: false,
     DL: false,
@@ -57,6 +90,7 @@ export function EarningsCalendar() {
       const cur = { ...(next[row.ticker] ?? { ...EMPTY_REVIEW }) };
       cur[row.reviewer] = row.reviewed;
       next[row.ticker] = cur;
+      saveLocalReview(next);
       return next;
     });
   }, []);
@@ -71,9 +105,24 @@ export function EarningsCalendar() {
       if (cancelled) return;
       if (error) {
         console.error(error);
+        setSupabaseError(error.message);
         return;
       }
+      setSupabaseError(null);
       setReviewMap(reviewRowsToMap((data ?? []) as ReitReviewRow[]));
+    })();
+
+    (async () => {
+      const { data, error } = await supabase
+        .from("reit_event_override")
+        .select("*");
+      if (cancelled) return;
+      if (error) {
+        console.error(error);
+        setSupabaseError(error.message);
+        return;
+      }
+      setOverrides(eventOverridesToMap((data ?? []) as ReitEventOverrideRow[]));
     })();
 
     const channel = supabase
@@ -91,6 +140,7 @@ export function EarningsCalendar() {
                 cur[oldRow.reviewer as ReviewerId] = false;
                 if (!cur.DK && !cur.DL && !cur.SD) delete next[oldRow.ticker!];
                 else next[oldRow.ticker!] = cur;
+                saveLocalReview(next);
                 return next;
               });
             }
@@ -102,9 +152,33 @@ export function EarningsCalendar() {
       )
       .subscribe();
 
+    const overridesChannel = supabase
+      .channel("reit_event_override_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "reit_event_override" },
+        (payload) => {
+          if (payload.eventType === "DELETE") {
+            const oldRow = payload.old as Partial<ReitEventOverrideRow> | null;
+            if (!oldRow?.ticker) return;
+            setOverrides((prev) => {
+              const next = { ...prev };
+              delete next[oldRow.ticker!];
+              return next;
+            });
+            return;
+          }
+          const row = payload.new as ReitEventOverrideRow;
+          if (!row?.ticker) return;
+          setOverrides((prev) => ({ ...prev, [row.ticker]: row }));
+        },
+      )
+      .subscribe();
+
     return () => {
       cancelled = true;
       supabase.removeChannel(channel);
+      supabase.removeChannel(overridesChannel);
     };
   }, [supabase, mergeRow]);
 
@@ -131,9 +205,23 @@ export function EarningsCalendar() {
     [revFilters],
   );
 
+  const mergedRows = useMemo(() => {
+    return ordered.map((r) => {
+      const o = overrides[r.ticker];
+      if (!o) return r;
+      return {
+        ...r,
+        releaseDate: o.release_date ?? r.releaseDate,
+        callDate: o.call_date ?? r.callDate,
+        status: o.status ?? r.status,
+        notes: o.notes ?? r.notes,
+      };
+    });
+  }, [ordered, overrides]);
+
   const visibleRows = useMemo(() => {
     const q = search.toLowerCase();
-    return ordered.filter((r) => {
+    return mergedRows.filter((r) => {
       const rev = getRev(reviewMap, r.ticker);
       const okSector = !sector || r.sector === sector;
       const okEx = !exchange || r.exchange === exchange;
@@ -147,44 +235,87 @@ export function EarningsCalendar() {
         !reviewedOnly || rev.DK || rev.DL || rev.SD;
       return okSector && okEx && okSearch && okRev && okReviewedOnly;
     });
-  }, [ordered, reviewMap, sector, exchange, search, activeRev, reviewedOnly]);
+  }, [mergedRows, reviewMap, sector, exchange, search, activeRev, reviewedOnly]);
 
   const counts = useMemo(() => {
     let dk = 0;
     let dl = 0;
     let sd = 0;
-    for (const r of ordered) {
+    for (const r of mergedRows) {
       const rev = getRev(reviewMap, r.ticker);
       if (rev.DK) dk++;
       if (rev.DL) dl++;
       if (rev.SD) sd++;
     }
-    return { dk, dl, sd, total: ordered.length };
-  }, [ordered, reviewMap]);
+    return { dk, dl, sd, total: mergedRows.length };
+  }, [mergedRows, reviewMap]);
+
+  const [editing, setEditing] = useState<ReitRow | null>(null);
+  const [editRelease, setEditRelease] = useState("");
+  const [editCall, setEditCall] = useState("");
+  const [editStatus, setEditStatus] = useState<"CONF" | "EST">("EST");
+  const [editNotes, setEditNotes] = useState("");
+
+  const startEdit = (row: ReitRow) => {
+    setEditing(row);
+    setEditRelease(row.releaseDate);
+    setEditCall(row.callDate);
+    setEditStatus(row.status);
+    setEditNotes(row.notes);
+  };
+
+  const saveEdit = async () => {
+    if (!editing) return;
+    const ticker = editing.ticker;
+    const payload: ReitEventOverrideRow = {
+      ticker,
+      release_date: editRelease.trim() || null,
+      call_date: editCall.trim() || null,
+      status: editStatus,
+      notes: editNotes.trim() || null,
+    };
+
+    if (!supabase) {
+      setSupabaseError(
+        "Supabase is not configured; deploy with env vars to enable editing sync.",
+      );
+      return;
+    }
+
+    const { error } = await supabase.from("reit_event_override").upsert(
+      {
+        ...payload,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "ticker" },
+    );
+    if (error) {
+      console.error(error);
+      setSupabaseError(error.message);
+      return;
+    }
+    setSupabaseError(null);
+    setEditing(null);
+    flashSaved();
+  };
 
   const toggleChip = async (ticker: string, reviewer: ReviewerId) => {
     const current = getRev(reviewMap, ticker)[reviewer];
     const nextVal = !current;
-
-    if (!supabase) {
-      setReviewMap((prev) => {
-        const p = { ...prev };
-        const cur = { ...(p[ticker] ?? { ...EMPTY_REVIEW }) };
-        cur[reviewer] = nextVal;
-        p[ticker] = cur;
-        return p;
-      });
-      flashSaved();
-      return;
-    }
 
     setReviewMap((prev) => {
       const p = { ...prev };
       const cur = { ...(p[ticker] ?? { ...EMPTY_REVIEW }) };
       cur[reviewer] = nextVal;
       p[ticker] = cur;
+      saveLocalReview(p);
       return p;
     });
+
+    if (!supabase) {
+      flashSaved();
+      return;
+    }
 
     const { error } = nextVal
       ? await supabase.from("reit_review").upsert(
@@ -204,17 +335,11 @@ export function EarningsCalendar() {
 
     if (error) {
       console.error(error);
-      setReviewMap((prev) => {
-        const p = { ...prev };
-        const cur = { ...(p[ticker] ?? { ...EMPTY_REVIEW }) };
-        cur[reviewer] = current;
-        if (!cur.DK && !cur.DL && !cur.SD) delete p[ticker];
-        else p[ticker] = cur;
-        return p;
-      });
+      setSupabaseError(error.message);
       return;
     }
 
+    setSupabaseError(null);
     flashSaved();
   };
 
@@ -222,10 +347,14 @@ export function EarningsCalendar() {
     <div className="page">
       {!supabase ? (
         <div className="config-banner" role="status">
-          <strong>Tip:</strong> For live DK/DL/SD sync, add the two Supabase keys
-          to <code>.env.local</code> (see <code>.env.example</code>), run the SQL
-          in <code>supabase/migrations/</code>, then restart the dev server.
-          Until then, chips only stick for this browser.
+          <strong>Tip:</strong> Live DK/DL/SD sync is off (Supabase not configured).
+          Chips will still work and save in this browser.
+        </div>
+      ) : supabaseError ? (
+        <div className="config-banner" role="status">
+          <strong>Supabase error:</strong> {supabaseError}
+          <br />
+          Chips will still work locally, but won’t sync until this is fixed.
         </div>
       ) : null}
 
@@ -339,8 +468,19 @@ export function EarningsCalendar() {
       <div className="ics-row">
         <span className="ics-label">Team calendar (ICS):</span>
         <a className="ics-link" href="/api/calendar.ics">
-          Subscribe in Outlook / Google Calendar
+          https://…/api/calendar.ics
         </a>
+        {origin ? (
+          <>
+            <span className="muted">(desktop)</span>
+            <a
+              className="ics-link"
+              href={origin.replace(/^https?:\/\//, "webcal://") + "/api/calendar.ics"}
+            >
+              webcal://…
+            </a>
+          </>
+        ) : null}
       </div>
 
       <table>
@@ -460,7 +600,17 @@ export function EarningsCalendar() {
                 <td>
                   <span className={statusBadge}>{r.status}</span>
                 </td>
-                <td className="notes">{r.notes}</td>
+                <td className="notes">
+                  <span>{r.notes}</span>
+                  <button
+                    type="button"
+                    className="edit-btn"
+                    onClick={() => startEdit(r)}
+                    title="Edit release/call info"
+                  >
+                    Edit
+                  </button>
+                </td>
                 <td className="link-cell">
                   <a href={sa} target="_blank" rel="noreferrer noopener">
                     SA
@@ -499,6 +649,79 @@ export function EarningsCalendar() {
           })}
         </tbody>
       </table>
+
+      {editing ? (
+        <div className="modal-backdrop" role="dialog" aria-modal="true">
+          <div className="modal">
+            <div className="modal-head">
+              <div className="modal-title">
+                Edit {editing.ticker} — {editing.name}
+              </div>
+              <button
+                type="button"
+                className="modal-x"
+                onClick={() => setEditing(null)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="modal-grid">
+              <label className="modal-label">
+                Release date
+                <input
+                  className="modal-input"
+                  value={editRelease}
+                  onChange={(e) => setEditRelease(e.target.value)}
+                  placeholder="Apr 16, 2026"
+                />
+              </label>
+              <label className="modal-label">
+                Earnings call
+                <input
+                  className="modal-input"
+                  value={editCall}
+                  onChange={(e) => setEditCall(e.target.value)}
+                  placeholder="Apr 16, 2026, 5:00p"
+                />
+              </label>
+              <label className="modal-label">
+                Status
+                <select
+                  className="modal-input"
+                  value={editStatus}
+                  onChange={(e) => setEditStatus(e.target.value as "CONF" | "EST")}
+                >
+                  <option value="CONF">CONF</option>
+                  <option value="EST">EST</option>
+                </select>
+              </label>
+              <label className="modal-label">
+                Notes
+                <input
+                  className="modal-input"
+                  value={editNotes}
+                  onChange={(e) => setEditNotes(e.target.value)}
+                  placeholder="After close"
+                />
+              </label>
+            </div>
+
+            <div className="modal-actions">
+              <button type="button" className="modal-secondary" onClick={() => setEditing(null)}>
+                Cancel
+              </button>
+              <button type="button" className="modal-primary" onClick={() => void saveEdit()}>
+                Save
+              </button>
+            </div>
+            <div className="modal-foot">
+              Changes save to Supabase and update the table + ICS feed automatically.
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       <div className={`no-results ${visibleRows.length === 0 ? "show" : ""}`}>
         No results match your filters.

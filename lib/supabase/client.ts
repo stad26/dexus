@@ -7,6 +7,15 @@ export type ReitReviewRow = {
   updated_at?: string;
 };
 
+export type ReitEventOverrideRow = {
+  ticker: string;
+  release_date: string | null;
+  call_date: string | null;
+  status: "CONF" | "EST" | null;
+  notes: string | null;
+  updated_at?: string;
+};
+
 let browserClient: SupabaseClient | null = null;
 
 export function getSupabaseBrowser(): SupabaseClient | null {
@@ -23,5 +32,11 @@ export function reviewRowsToMap(rows: ReitReviewRow[]) {
     if (!map[r.ticker]) map[r.ticker] = { DK: false, DL: false, SD: false };
     map[r.ticker][r.reviewer] = r.reviewed;
   }
+  return map;
+}
+
+export function eventOverridesToMap(rows: ReitEventOverrideRow[]) {
+  const map: Record<string, ReitEventOverrideRow> = {};
+  for (const r of rows) map[r.ticker] = r;
   return map;
 }
