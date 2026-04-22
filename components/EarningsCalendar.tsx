@@ -715,78 +715,89 @@ export function EarningsCalendar() {
             </div>
 
             <div className="modal-grid">
-              <label className="modal-label">
-                Release date
-                <input
-                  className="modal-input"
-                  type="date"
-                  value={editReleaseDate}
-                  onChange={(e) => setEditReleaseDate(e.target.value)}
-                />
-              </label>
-              <label className="modal-label">
-                Release status
-                <select
-                  className="modal-input"
-                  value={editReleaseStatus}
-                  onChange={(e) =>
-                    setEditReleaseStatus(e.target.value as "CONF" | "EST")
-                  }
-                >
-                  <option value="CONF">CONF</option>
-                  <option value="EST">EST</option>
-                </select>
-              </label>
-              <label className="modal-label">
-                Release notes
-                <input
-                  className="modal-input"
-                  value={editReleaseNotes}
-                  onChange={(e) => setEditReleaseNotes(e.target.value)}
-                  placeholder="After close"
-                />
-              </label>
-              <label className="modal-label">
-                Earnings call date
-                <input
-                  className="modal-input"
-                  type="date"
-                  value={editCallDate}
-                  onChange={(e) => setEditCallDate(e.target.value)}
-                />
-              </label>
-              <label className="modal-label">
-                Earnings call time
-                <input
-                  className="modal-input"
-                  type="time"
-                  value={editCallTime}
-                  onChange={(e) => setEditCallTime(e.target.value)}
-                />
-              </label>
-              <label className="modal-label">
-                Earnings call timezone
-                <select
-                  className="modal-input"
-                  value={editCallTz}
-                  onChange={(e) => setEditCallTz(e.target.value as "ET" | "CT" | "PT")}
-                >
-                  <option value="ET">ET</option>
-                  <option value="CT">CT</option>
-                  <option value="PT">PT</option>
-                </select>
-              </label>
-              <label className="modal-label">
-                Earnings call status
-                <select
-                  className="modal-input"
-                  value={editCallStatus}
-                  onChange={(e) => setEditCallStatus(e.target.value as "CONF" | "EST")}
-                >
-                  <option value="CONF">CONF</option>
-                  <option value="EST">EST</option>
-                </select>
-              </label>
+              <div className="modal-col">
+                <div className="modal-col-title">Earnings release</div>
+                <label className="modal-label">
+                  Release date
+                  <input
+                    className="modal-input"
+                    type="date"
+                    value={editReleaseDate}
+                    onChange={(e) => setEditReleaseDate(e.target.value)}
+                  />
+                </label>
+                <label className="modal-label">
+                  Release status
+                  <select
+                    className="modal-input"
+                    value={editReleaseStatus}
+                    onChange={(e) =>
+                      setEditReleaseStatus(e.target.value as "CONF" | "EST")
+                    }
+                  >
+                    <option value="CONF">CONF</option>
+                    <option value="EST">EST</option>
+                  </select>
+                </label>
+                <label className="modal-label">
+                  Release notes
+                  <input
+                    className="modal-input"
+                    value={editReleaseNotes}
+                    onChange={(e) => setEditReleaseNotes(e.target.value)}
+                    placeholder="After close"
+                  />
+                </label>
+              </div>
+
+              <div className="modal-col">
+                <div className="modal-col-title">Earnings call</div>
+                <label className="modal-label">
+                  Call date
+                  <input
+                    className="modal-input"
+                    type="date"
+                    value={editCallDate}
+                    onChange={(e) => setEditCallDate(e.target.value)}
+                  />
+                </label>
+                <label className="modal-label">
+                  Call time
+                  <input
+                    className="modal-input"
+                    type="time"
+                    value={editCallTime}
+                    onChange={(e) => setEditCallTime(e.target.value)}
+                  />
+                </label>
+                <label className="modal-label">
+                  Timezone
+                  <select
+                    className="modal-input"
+                    value={editCallTz}
+                    onChange={(e) =>
+                      setEditCallTz(e.target.value as "ET" | "CT" | "PT")
+                    }
+                  >
+                    <option value="ET">ET</option>
+                    <option value="CT">CT</option>
+                    <option value="PT">PT</option>
+                  </select>
+                </label>
+                <label className="modal-label">
+                  Call status
+                  <select
+                    className="modal-input"
+                    value={editCallStatus}
+                    onChange={(e) =>
+                      setEditCallStatus(e.target.value as "CONF" | "EST")
+                    }
+                  >
+                    <option value="CONF">CONF</option>
+                    <option value="EST">EST</option>
+                  </select>
+                </label>
+              </div>
             </div>
 
             <div className="modal-actions">

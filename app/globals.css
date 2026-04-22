@@ -456,6 +456,21 @@ td {
   padding: 14px;
 }
 
+.modal-col {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.modal-col-title {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
 .modal-label {
   display: grid;
   gap: 6px;
