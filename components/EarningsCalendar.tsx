@@ -24,10 +24,9 @@ const COL_TO_SORT: Record<number, keyof ReitRow | null> = {
   2: "sector",
   3: "releaseDate",
   4: "callDate",
-  5: "exchange",
-  6: "ticker",
-  7: "status",
-  8: "notes",
+  5: "ticker",
+  6: "status",
+  7: "notes",
 };
 
 function getRev(map: Record<string, ReviewFlags>, ticker: string): ReviewFlags {
@@ -73,7 +72,6 @@ export function EarningsCalendar() {
   });
   const [reviewedOnly, setReviewedOnly] = useState(false);
   const [sector, setSector] = useState("");
-  const [exchange, setExchange] = useState("");
   const [search, setSearch] = useState("");
   const [sortCol, setSortCol] = useState<number | null>(null);
   const [sortDir, setSortDir] = useState<1 | -1>(1);
@@ -240,7 +238,6 @@ export function EarningsCalendar() {
     return mergedRows.filter((r) => {
       const rev = getRev(reviewMap, r.ticker);
       const okSector = !sector || r.sector === sector;
-      const okEx = !exchange || r.exchange === exchange;
       const okSearch =
         !q ||
         r.ticker.toLowerCase().includes(q) ||
@@ -249,9 +246,9 @@ export function EarningsCalendar() {
         activeRev.length === 0 || activeRev.every((x) => rev[x]);
       const okReviewedOnly =
         !reviewedOnly || rev.DK || rev.DL || rev.SD;
-      return okSector && okEx && okSearch && okRev && okReviewedOnly;
+      return okSector && okSearch && okRev && okReviewedOnly;
     });
-  }, [mergedRows, reviewMap, sector, exchange, search, activeRev, reviewedOnly]);
+  }, [mergedRows, reviewMap, sector, search, activeRev, reviewedOnly]);
 
   const counts = useMemo(() => {
     let dk = 0;
@@ -438,14 +435,6 @@ export function EarningsCalendar() {
           <option value="canadian">Canadian REIT</option>
         </select>
 
-        <label className="ml">Exchange:</label>
-        <select value={exchange} onChange={(e) => setExchange(e.target.value)}>
-          <option value="">All</option>
-          <option value="NYSE">NYSE</option>
-          <option value="NASDAQ">NASDAQ</option>
-          <option value="TSX">TSX</option>
-        </select>
-
         <label className="ml">Search:</label>
         <input
           type="text"
@@ -530,8 +519,7 @@ export function EarningsCalendar() {
           <col style={{ width: "10%" }} />
           <col style={{ width: "9%" }} />
           <col style={{ width: "12%" }} />
-          <col style={{ width: "4.5%" }} />
-          <col style={{ width: "5.5%" }} />
+          <col style={{ width: "6%" }} />
           <col style={{ width: "5%" }} />
           <col style={{ width: "8%" }} />
           <col style={{ width: "5%" }} />
@@ -573,30 +561,23 @@ export function EarningsCalendar() {
               data-col={5}
               onClick={() => onHeaderClick(5)}
             >
-              Exch
+              Ticker
             </th>
             <th
               className={sortCol === 6 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={6}
               onClick={() => onHeaderClick(6)}
             >
-              Ticker
+              Status
             </th>
             <th
               className={sortCol === 7 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={7}
               onClick={() => onHeaderClick(7)}
             >
-              Status
-            </th>
-            <th
-              className={sortCol === 8 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
-              data-col={8}
-              onClick={() => onHeaderClick(8)}
-            >
               Notes
             </th>
-            <th className="no-sort">SA</th>
+            <th className="no-sort">Seeking Alpha</th>
             <th className="no-sort center">
               Reviewed By
               <div className="th-sub">click to toggle</div>
@@ -642,7 +623,6 @@ export function EarningsCalendar() {
                     </span>
                   ) : null}
                 </td>
-                <td className="exch">{r.exchange}</td>
                 <td className="mono ticker">{r.ticker}</td>
                 <td>
                   <span className={statusBadge}>{r.status}</span>
@@ -660,7 +640,7 @@ export function EarningsCalendar() {
                 </td>
                 <td className="link-cell">
                   <a href={sa} target="_blank" rel="noreferrer noopener">
-                    SA
+                    Seeking Alpha
                   </a>
                 </td>
                 <td>
@@ -727,6 +707,15 @@ export function EarningsCalendar() {
                   />
                 </label>
                 <label className="modal-label">
+                  Release notes
+                  <input
+                    className="modal-input"
+                    value={editReleaseNotes}
+                    onChange={(e) => setEditReleaseNotes(e.target.value)}
+                    placeholder="After close"
+                  />
+                </label>
+                <label className="modal-label">
                   Release status
                   <select
                     className="modal-input"
@@ -738,15 +727,6 @@ export function EarningsCalendar() {
                     <option value="CONF">CONF</option>
                     <option value="EST">EST</option>
                   </select>
-                </label>
-                <label className="modal-label">
-                  Release notes
-                  <input
-                    className="modal-input"
-                    value={editReleaseNotes}
-                    onChange={(e) => setEditReleaseNotes(e.target.value)}
-                    placeholder="After close"
-                  />
                 </label>
               </div>
 
@@ -834,7 +814,7 @@ export function EarningsCalendar() {
         <span className="dl-inline">DL</span> = Dennis Liu &nbsp;·&nbsp;
         <span className="sd-inline">SD</span> = Steph Do &nbsp;·&nbsp; Toggles sync
         live for everyone when Supabase is configured.{" "}
-        <strong>SA</strong> opens Seeking Alpha (symbol earnings hub). &nbsp;|&nbsp;
+        <strong>Seeking Alpha</strong> opens the symbol earnings hub. &nbsp;|&nbsp;
         <strong>CONF</strong> = date confirmed via SEC 8-K / company press release
         &nbsp;·&nbsp;
         <strong>EST</strong> = estimated from historical reporting patterns
