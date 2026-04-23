@@ -60,9 +60,6 @@ export function EarningsCalendar() {
     {},
   );
   const [supabaseError, setSupabaseError] = useState<string | null>(null);
-  const [origin] = useState<string>(() =>
-    typeof window === "undefined" ? "" : window.location.origin,
-  );
   const [revFilters, setRevFilters] = useState<Record<ReviewerId, boolean>>({
     DK: false,
     DL: false,
@@ -512,23 +509,6 @@ export function EarningsCalendar() {
         </div>
       </div>
 
-      <div className="ics-row">
-        <span className="ics-label">Team calendar (ICS):</span>
-        <a className="ics-link" href="/api/calendar.ics">
-          https://…/api/calendar.ics
-        </a>
-        {origin ? (
-          <>
-            <span className="muted">(desktop)</span>
-            <a
-              className="ics-link"
-              href={origin.replace(/^https?:\/\//, "webcal://") + "/api/calendar.ics"}
-            >
-              webcal://…
-            </a>
-          </>
-        ) : null}
-      </div>
 
       <table>
         <colgroup>
@@ -786,7 +766,7 @@ export function EarningsCalendar() {
               </button>
             </div>
             <div className="modal-foot">
-              Changes save to Supabase and update the table + ICS feed automatically.
+              Changes save to Supabase and update the table automatically.
             </div>
           </div>
         </div>
