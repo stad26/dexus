@@ -425,7 +425,6 @@ export function EarningsCalendar() {
           <br />
           Sources: Company IR pages, SEC 8-Ks, press releases
           <br />
-          <span className="star">★</span> = Already reported
         </div>
       </header>
 
@@ -568,7 +567,6 @@ export function EarningsCalendar() {
         </thead>
         <tbody>
           {visibleRows.map((r) => {
-            const isReported = r.releaseDate.includes("★");
             const dotClass = r.status === "CONF" ? "confirmed" : "estimated";
             const callDotClass = r.callStatus === "CONF" ? "confirmed" : "estimated";
             const rev = getRev(reviewMap, r.ticker);
@@ -577,15 +575,7 @@ export function EarningsCalendar() {
 
             return (
               <tr key={r.ticker} className={anyRev ? "reviewed-row" : undefined}>
-                <td>
-                  {r.name}
-                  {isReported ? (
-                    <>
-                      {" "}
-                      <span className="star">★</span>
-                    </>
-                  ) : null}
-                </td>
+                <td>{r.name}</td>
                 <td className="mono ticker">{r.ticker}</td>
                 <td>
                   <span className={`sector-tag s-${r.sector}`}>
@@ -594,7 +584,7 @@ export function EarningsCalendar() {
                 </td>
                 <td className="mono release-date-cell">
                   <span className={`conf-dot ${dotClass}`} />
-                  {r.releaseDate.replace("★", "")}
+                  {r.releaseDate}
                   {r.notes ? (
                     <span className="release-timing"> · {r.notes}</span>
                   ) : null}
@@ -795,8 +785,6 @@ export function EarningsCalendar() {
         <strong>CONF</strong> = date confirmed via SEC 8-K / company press release
         &nbsp;·&nbsp;
         <strong>EST</strong> = estimated from historical reporting patterns
-        &nbsp;·&nbsp;
-        <span className="star">★</span> = already reported as of April 14, 2026.
         Call times in ET unless noted.
       </div>
     </div>
