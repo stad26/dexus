@@ -1870,16 +1870,6 @@
     "notes": ""
   },
   {
-    "ticker": "SMA",
-    "name": "SMA (unverified)",
-    "sector": "specialty",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "SELF",
     "name": "Global Self Storage",
     "sector": "self-storage",
@@ -1922,16 +1912,6 @@
   {
     "ticker": "KW",
     "name": "Kennedy-Wilson Holdings",
-    "sector": "office",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "CDP",
-    "name": "CDP (unverified)",
     "sector": "office",
     "releaseDate": "TBD",
     "callDate": "TBD",
@@ -2016,16 +1996,6 @@
     "releaseDate": "TBD",
     "callDate": "TBD",
     "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "CPLG",
-    "name": "CPLG (unverified)",
-    "sector": "hotel",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
     "status": "EST",
     "notes": ""
   },
