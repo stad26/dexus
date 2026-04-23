@@ -71,9 +71,16 @@ export function EarningsCalendar() {
   const [reviewedOnly, setReviewedOnly] = useState(false);
   const [sector, setSector] = useState("");
   const [search, setSearch] = useState("");
-  const [sortCol, setSortCol] = useState<number | null>(null);
+  const [sortCol, setSortCol] = useState<number | null>(4);
   const [sortDir, setSortDir] = useState<1 | -1>(1);
-  const [ordered, setOrdered] = useState<ReitRow[]>(() => [...REIT_ROWS]);
+  const [ordered, setOrdered] = useState<ReitRow[]>(() => {
+    const parseDate = (val: string) => {
+      const clean = val.replace(/★/g, "").split(",")[0].trim();
+      const d = new Date(clean);
+      return isNaN(d.getTime()) ? Infinity : d.getTime();
+    };
+    return [...REIT_ROWS].sort((a, b) => parseDate(a.releaseDate) - parseDate(b.releaseDate));
+  });
   const [saveFlash, setSaveFlash] = useState(false);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
