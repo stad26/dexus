@@ -74,7 +74,7 @@
     "name": "Equity Residential",
     "sector": "residential",
     "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 29, 2026, TBD",
+    "callDate": "Apr 29, 2026, 10:00a CT",
     "exchange": "NYSE",
     "status": "CONF",
     "notes": "After close"
@@ -104,7 +104,7 @@
     "name": "Mid-America Apartment",
     "sector": "residential",
     "releaseDate": "Apr 29, 2026",
-    "callDate": "Apr 30, 2026, TBD",
+    "callDate": "Apr 30, 2026, 9:00a CT",
     "exchange": "NYSE",
     "status": "CONF",
     "notes": "After close"
@@ -203,20 +203,20 @@
     "ticker": "VTR",
     "name": "Ventas, Inc.",
     "sector": "healthcare",
-    "releaseDate": "Apr 25, 2026",
-    "callDate": "Apr 25, 2026, TBD",
+    "releaseDate": "Apr 27, 2026",
+    "callDate": "Apr 28, 2026, 10:00a",
     "exchange": "NYSE",
-    "status": "EST",
-    "notes": "Late April"
+    "status": "CONF",
+    "notes": "After close"
   },
   {
     "ticker": "CCI",
     "name": "Crown Castle Inc.",
     "sector": "tower",
-    "releaseDate": "Apr 23, 2026",
-    "callDate": "Apr 23, 2026, TBD",
+    "releaseDate": "Apr 22, 2026\u2605",
+    "callDate": "Apr 22, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -224,49 +224,49 @@
     "name": "BXP, Inc.",
     "sector": "office",
     "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 29, 2026, TBD",
+    "callDate": "Apr 29, 2026, 10:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "VNO",
     "name": "Vornado Realty Trust",
     "sector": "office",
-    "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 28, 2026, TBD",
+    "releaseDate": "May 4, 2026",
+    "callDate": "May 5, 2026, 10:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "SPG",
     "name": "Simon Property Group",
     "sector": "retail",
-    "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 28, 2026, TBD",
+    "releaseDate": "May 11, 2026",
+    "callDate": "May 11, 2026, 5:00p",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "REG",
     "name": "Regency Centers Corp.",
     "sector": "retail",
-    "releaseDate": "Apr 29, 2026",
-    "callDate": "Apr 29, 2026, TBD",
+    "releaseDate": "Apr 28, 2026",
+    "callDate": "Apr 28, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "Before open"
   },
   {
     "ticker": "EXR",
     "name": "Extra Space Storage",
     "sector": "self-storage",
-    "releaseDate": "Apr 29, 2026",
-    "callDate": "Apr 29, 2026, TBD",
+    "releaseDate": "Apr 28, 2026",
+    "callDate": "Apr 29, 2026, 1:00p",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -293,20 +293,20 @@
     "ticker": "HIW",
     "name": "Highwoods Properties",
     "sector": "office",
-    "releaseDate": "Apr 29, 2026",
-    "callDate": "Apr 30, 2026, TBD",
+    "releaseDate": "Apr 28, 2026",
+    "callDate": "Apr 29, 2026, 11:00a",
     "exchange": "NYSE",
-    "status": "EST",
-    "notes": "Before open"
+    "status": "CONF",
+    "notes": "After close"
   },
   {
     "ticker": "SBAC",
     "name": "SBA Communications",
     "sector": "tower",
-    "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 28, 2026, TBD",
+    "releaseDate": "Apr 29, 2026",
+    "callDate": "Apr 29, 2026, TBD",
     "exchange": "NASDAQ",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -453,10 +453,10 @@
     "ticker": "OHI",
     "name": "Omega Healthcare Investors",
     "sector": "healthcare",
-    "releaseDate": "May 5, 2026",
-    "callDate": "May 5, 2026, TBD",
+    "releaseDate": "Apr 28, 2026",
+    "callDate": "Apr 28, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -533,10 +533,10 @@
     "ticker": "DLR",
     "name": "Digital Realty Trust",
     "sector": "data-center",
-    "releaseDate": "Apr 24, 2026",
+    "releaseDate": "Apr 23, 2026",
     "callDate": "Apr 24, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -553,30 +553,30 @@
     "ticker": "FR",
     "name": "First Industrial Realty",
     "sector": "industrial",
-    "releaseDate": "Apr 22, 2026",
+    "releaseDate": "Apr 22, 2026\u2605",
     "callDate": "Apr 22, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "EGP",
     "name": "Eastgroup Properties",
     "sector": "industrial",
-    "releaseDate": "Apr 22, 2026",
-    "callDate": "Apr 23, 2026, TBD",
+    "releaseDate": "Apr 22, 2026\u2605",
+    "callDate": "Apr 23, 2026, 10:00a",
     "exchange": "NASDAQ",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "REXR",
     "name": "Rexford Industrial",
     "sector": "industrial",
-    "releaseDate": "Apr 16, 2026",
-    "callDate": "Apr 16, 2026, TBD",
+    "releaseDate": "Apr 23, 2026\u2605",
+    "callDate": "Apr 24, 2026, 11:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -606,7 +606,7 @@
     "releaseDate": "Apr 23, 2026",
     "callDate": "Apr 24, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -696,17 +696,17 @@
     "releaseDate": "Apr 29, 2026",
     "callDate": "Apr 30, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "GLPI",
     "name": "Gaming & Leisure Properties",
     "sector": "casino",
-    "releaseDate": "Apr 24, 2026",
-    "callDate": "Apr 24, 2026, TBD",
+    "releaseDate": "Apr 23, 2026\u2605",
+    "callDate": "Apr 24, 2026, 10:00a",
     "exchange": "NASDAQ",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -723,10 +723,10 @@
     "ticker": "INVH",
     "name": "Invitation Homes",
     "sector": "residential",
-    "releaseDate": "Apr 30, 2026",
-    "callDate": "Apr 30, 2026, TBD",
+    "releaseDate": "Apr 29, 2026",
+    "callDate": "Apr 30, 2026, 11:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -753,10 +753,10 @@
     "ticker": "CPT",
     "name": "Camden Property Trust",
     "sector": "residential",
-    "releaseDate": "Apr 28, 2026",
-    "callDate": "Apr 29, 2026, TBD",
+    "releaseDate": "Apr 30, 2026",
+    "callDate": "May 1, 2026, 10:00a CT",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -803,10 +803,10 @@
     "ticker": "CUZ",
     "name": "Cousins Properties",
     "sector": "office",
-    "releaseDate": "Apr 24, 2026",
-    "callDate": "Apr 24, 2026, TBD",
+    "releaseDate": "Apr 29, 2026",
+    "callDate": "Apr 30, 2026, 10:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -843,20 +843,20 @@
     "ticker": "ARE",
     "name": "Alexandria Real Estate",
     "sector": "office",
-    "releaseDate": "Apr 22, 2026",
+    "releaseDate": "Apr 22, 2026\u2605",
     "callDate": "Apr 22, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
     "ticker": "KRC",
     "name": "Kilroy Realty Corp.",
     "sector": "office",
-    "releaseDate": "Apr 30, 2026",
-    "callDate": "Apr 30, 2026, TBD",
+    "releaseDate": "Apr 27, 2026",
+    "callDate": "Apr 28, 2026, 1:00p",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -933,10 +933,10 @@
     "ticker": "APLE",
     "name": "Apple Hospitality REIT",
     "sector": "hotel",
-    "releaseDate": "May 1, 2026",
-    "callDate": "May 1, 2026, TBD",
+    "releaseDate": "May 4, 2026",
+    "callDate": "May 5, 2026, 10:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -953,10 +953,10 @@
     "ticker": "DRH",
     "name": "DiamondRock Hospitality",
     "sector": "hotel",
-    "releaseDate": "May 1, 2026",
-    "callDate": "May 1, 2026, TBD",
+    "releaseDate": "Apr 30, 2026",
+    "callDate": "May 1, 2026, 9:00a",
     "exchange": "NYSE",
-    "status": "EST",
+    "status": "CONF",
     "notes": "After close"
   },
   {
@@ -1903,11 +1903,11 @@
     "ticker": "BDN",
     "name": "Brandywine Realty Trust",
     "sector": "office",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
+    "releaseDate": "Apr 23, 2026\u2605",
+    "callDate": "Apr 23, 2026, TBD",
     "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
+    "status": "CONF",
+    "notes": "After close"
   },
   {
     "ticker": "KW",
