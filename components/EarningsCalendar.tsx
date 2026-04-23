@@ -21,12 +21,10 @@ type UiRow = ReitRow & { callStatus?: "CONF" | "EST" | null };
 
 const COL_TO_SORT: Record<number, keyof ReitRow | null> = {
   1: "name",
-  2: "sector",
-  3: "releaseDate",
-  4: "callDate",
-  5: "ticker",
-  6: "status",
-  7: "notes",
+  2: "ticker",
+  3: "sector",
+  4: "releaseDate",
+  5: "callDate",
 };
 
 function getRev(map: Record<string, ReviewFlags>, ticker: string): ReviewFlags {
@@ -514,20 +512,17 @@ export function EarningsCalendar() {
 
       <table>
         <colgroup>
-          <col style={{ width: "3%" }} />
-          <col style={{ width: "14%" }} />
-          <col style={{ width: "10%" }} />
-          <col style={{ width: "9%" }} />
-          <col style={{ width: "12%" }} />
-          <col style={{ width: "6%" }} />
+          <col style={{ width: "20%" }} />
+          <col style={{ width: "7%" }} />
+          <col style={{ width: "11%" }} />
+          <col style={{ width: "15%" }} />
+          <col style={{ width: "15%" }} />
           <col style={{ width: "5%" }} />
-          <col style={{ width: "8%" }} />
-          <col style={{ width: "5%" }} />
-          <col style={{ width: "10%" }} />
+          <col style={{ width: "11%" }} />
+          <col style={{ width: "11%" }} />
         </colgroup>
         <thead>
           <tr>
-            <th className="no-sort">#</th>
             <th
               className={sortCol === 1 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={1}
@@ -540,43 +535,30 @@ export function EarningsCalendar() {
               data-col={2}
               onClick={() => onHeaderClick(2)}
             >
-              Sector
+              Ticker
             </th>
             <th
               className={sortCol === 3 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={3}
               onClick={() => onHeaderClick(3)}
             >
-              Release Date
+              Sector
             </th>
             <th
               className={sortCol === 4 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={4}
               onClick={() => onHeaderClick(4)}
             >
-              Earnings Call
+              Release Date
             </th>
             <th
               className={sortCol === 5 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
               data-col={5}
               onClick={() => onHeaderClick(5)}
             >
-              Ticker
+              Earnings Call
             </th>
-            <th
-              className={sortCol === 6 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
-              data-col={6}
-              onClick={() => onHeaderClick(6)}
-            >
-              Status
-            </th>
-            <th
-              className={sortCol === 7 ? (sortDir === 1 ? "sort-asc" : "sort-desc") : ""}
-              data-col={7}
-              onClick={() => onHeaderClick(7)}
-            >
-              Notes
-            </th>
+            <th className="no-sort">Edit</th>
             <th className="no-sort">Seeking Alpha</th>
             <th className="no-sort center">
               Reviewed By
@@ -586,17 +568,15 @@ export function EarningsCalendar() {
         </thead>
         <tbody>
           {visibleRows.map((r) => {
-            const rowNum = ordered.findIndex((x) => x.ticker === r.ticker) + 1;
             const isReported = r.releaseDate.includes("★");
-            const statusBadge = r.status === "CONF" ? "badge-c" : "badge-e";
             const dotClass = r.status === "CONF" ? "confirmed" : "estimated";
+            const callDotClass = r.callStatus === "CONF" ? "confirmed" : "estimated";
             const rev = getRev(reviewMap, r.ticker);
             const anyRev = rev.DK || rev.DL || rev.SD;
             const sa = seekingAlphaUrl(r);
 
             return (
               <tr key={r.ticker} className={anyRev ? "reviewed-row" : undefined}>
-                <td className="row-num">{rowNum}</td>
                 <td>
                   {r.name}
                   {isReported ? (
@@ -606,29 +586,28 @@ export function EarningsCalendar() {
                     </>
                   ) : null}
                 </td>
+                <td className="mono ticker">{r.ticker}</td>
                 <td>
                   <span className={`sector-tag s-${r.sector}`}>
                     {SECTOR_LABELS[r.sector] ?? r.sector}
                   </span>
                 </td>
-                <td className="mono">
-                  <span className={`conf-dot ${dotClass}`} />
-                  {r.releaseDate.replace("★", "")}
-                </td>
-                <td className="mono muted">
-                  {r.callDate}{" "}
-                  {r.callStatus ? (
-                    <span className={r.callStatus === "CONF" ? "badge-c" : "badge-e"}>
-                      {r.callStatus}
-                    </span>
+                <td className="mono release-date-cell">
+                  <div className="release-date-line">
+                    <span className={`conf-dot ${dotClass}`} />
+                    {r.releaseDate.replace("★", "")}
+                  </div>
+                  {r.notes ? (
+                    <div className="release-timing">{r.notes}</div>
                   ) : null}
                 </td>
-                <td className="mono ticker">{r.ticker}</td>
-                <td>
-                  <span className={statusBadge}>{r.status}</span>
+                <td className="mono muted">
+                  {r.callStatus ? (
+                    <span className={`conf-dot ${callDotClass}`} />
+                  ) : null}
+                  {r.callDate}
                 </td>
-                <td className="notes">
-                  <span>{r.notes}</span>
+                <td className="edit-cell">
                   <button
                     type="button"
                     className="edit-btn"

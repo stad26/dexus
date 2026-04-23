@@ -341,16 +341,24 @@ tbody tr {
   transition: background 0.1s;
 }
 
+tbody tr:nth-child(even) {
+  background: #edeae2;
+}
+
 tbody tr:hover {
-  background: #eae6de;
+  background: #e4e0d8;
 }
 
 tbody tr.reviewed-row {
   background: #eeeae0;
 }
 
+tbody tr.reviewed-row:nth-child(even) {
+  background: #e8e4d8;
+}
+
 tbody tr.reviewed-row:hover {
-  background: #e6e2d8;
+  background: #e2ded4;
 }
 
 td {
@@ -531,6 +539,28 @@ td {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.release-date-cell {
+  vertical-align: top;
+  padding-top: 5px;
+}
+
+.release-date-line {
+  display: flex;
+  align-items: center;
+}
+
+.release-timing {
+  font-size: 9px;
+  color: var(--ink-light);
+  margin-top: 2px;
+  padding-left: 11px;
+}
+
+.edit-cell {
+  text-align: center;
 }
 
 .sector-tag {
