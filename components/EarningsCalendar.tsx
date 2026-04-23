@@ -512,14 +512,14 @@ export function EarningsCalendar() {
 
       <table>
         <colgroup>
-          <col style={{ width: "20%" }} />
-          <col style={{ width: "7%" }} />
-          <col style={{ width: "11%" }} />
-          <col style={{ width: "15%" }} />
-          <col style={{ width: "15%" }} />
-          <col style={{ width: "5%" }} />
-          <col style={{ width: "11%" }} />
-          <col style={{ width: "11%" }} />
+          <col style={{ width: "17%" }} />
+          <col style={{ width: "6%" }} />
+          <col style={{ width: "10%" }} />
+          <col style={{ width: "18%" }} />
+          <col style={{ width: "14%" }} />
+          <col style={{ width: "4%" }} />
+          <col style={{ width: "10%" }} />
+          <col style={{ width: "10%" }} />
         </colgroup>
         <thead>
           <tr>
@@ -593,12 +593,10 @@ export function EarningsCalendar() {
                   </span>
                 </td>
                 <td className="mono release-date-cell">
-                  <div className="release-date-line">
-                    <span className={`conf-dot ${dotClass}`} />
-                    {r.releaseDate.replace("★", "")}
-                  </div>
+                  <span className={`conf-dot ${dotClass}`} />
+                  {r.releaseDate.replace("★", "")}
                   {r.notes ? (
-                    <div className="release-timing">{r.notes}</div>
+                    <span className="release-timing"> · {r.notes}</span>
                   ) : null}
                 </td>
                 <td className="mono muted">

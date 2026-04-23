@@ -542,21 +542,9 @@ td {
   white-space: nowrap;
 }
 
-.release-date-cell {
-  vertical-align: top;
-  padding-top: 5px;
-}
-
-.release-date-line {
-  display: flex;
-  align-items: center;
-}
-
 .release-timing {
   font-size: 9px;
   color: var(--ink-light);
-  margin-top: 2px;
-  padding-left: 11px;
 }
 
 .edit-cell {
