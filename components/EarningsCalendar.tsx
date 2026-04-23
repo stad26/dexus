@@ -194,8 +194,21 @@ export function EarningsCalendar() {
       sortCol === col ? ((sortDir * -1) as 1 | -1) : (1 as 1 | -1);
     setSortCol(col);
     setSortDir(nextDir);
+    const isDateCol = key === "releaseDate" || key === "callDate";
+    const parseForSort = (val: string) => {
+      const clean = val.replace(/★/g, "").split(",")[0].trim(); // strip ★, take date portion only
+      const d = new Date(clean);
+      return isNaN(d.getTime()) ? Infinity : d.getTime();
+    };
     setOrdered((prev) =>
-      [...prev].sort((a, b) => String(a[key]).localeCompare(String(b[key])) * nextDir),
+      [...prev].sort((a, b) => {
+        if (isDateCol) {
+          const av = parseForSort(String(a[key]));
+          const bv = parseForSort(String(b[key]));
+          return (av - bv) * nextDir;
+        }
+        return String(a[key]).localeCompare(String(b[key])) * nextDir;
+      }),
     );
   };
 
