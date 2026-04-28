@@ -70,14 +70,6 @@ export function EarningsCalendar() {
   const [search, setSearch] = useState("");
   const [sortCol, setSortCol] = useState<number | null>(4);
   const [sortDir, setSortDir] = useState<1 | -1>(1);
-  const [ordered, setOrdered] = useState<ReitRow[]>(() => {
-    const parseDate = (val: string) => {
-      const clean = val.replace(/★/g, "").split(",")[0].trim();
-      const d = new Date(clean);
-      return isNaN(d.getTime()) ? Infinity : d.getTime();
-    };
-    return [...REIT_ROWS].sort((a, b) => parseDate(a.releaseDate) - parseDate(b.releaseDate));
-  });
   const [saveFlash, setSaveFlash] = useState(false);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -198,22 +190,6 @@ export function EarningsCalendar() {
       sortCol === col ? ((sortDir * -1) as 1 | -1) : (1 as 1 | -1);
     setSortCol(col);
     setSortDir(nextDir);
-    const isDateCol = key === "releaseDate" || key === "callDate";
-    const parseForSort = (val: string) => {
-      const clean = val.replace(/★/g, "").split(",")[0].trim(); // strip ★, take date portion only
-      const d = new Date(clean);
-      return isNaN(d.getTime()) ? Infinity : d.getTime();
-    };
-    setOrdered((prev) =>
-      [...prev].sort((a, b) => {
-        if (isDateCol) {
-          const av = parseForSort(String(a[key]));
-          const bv = parseForSort(String(b[key]));
-          return (av - bv) * nextDir;
-        }
-        return String(a[key]).localeCompare(String(b[key])) * nextDir;
-      }),
-    );
   };
 
   const activeRev = useMemo(
@@ -222,7 +198,8 @@ export function EarningsCalendar() {
   );
 
   const mergedRows = useMemo<UiRow[]>(() => {
-    return ordered.map((r) => {
+    // Apply overrides first
+    const rows: UiRow[] = REIT_ROWS.map((r) => {
       const o = overrides[r.ticker];
       if (!o) return r;
       // Prefer structured v2 overrides when present; else fall back to legacy text fields.
@@ -246,7 +223,23 @@ export function EarningsCalendar() {
         callStatus,
       };
     });
-  }, [ordered, overrides]);
+
+    // Sort using the merged (override-applied) values so overridden dates sort correctly
+    const key = sortCol !== null ? COL_TO_SORT[sortCol] : "releaseDate";
+    if (!key) return rows;
+    const isDateCol = key === "releaseDate" || key === "callDate";
+    const parseDate = (val: string) => {
+      const clean = val.replace(/★/g, "").split(",")[0].trim();
+      const d = new Date(clean);
+      return isNaN(d.getTime()) ? Infinity : d.getTime();
+    };
+    return [...rows].sort((a, b) => {
+      if (isDateCol) {
+        return (parseDate(String(a[key])) - parseDate(String(b[key]))) * sortDir;
+      }
+      return String(a[key]).localeCompare(String(b[key])) * sortDir;
+    });
+  }, [overrides, sortCol, sortDir]);
 
   const visibleRows = useMemo(() => {
     const q = search.toLowerCase();
@@ -300,6 +293,27 @@ export function EarningsCalendar() {
     setEditCallTime(o?.call_time ? o.call_time.slice(0, 5) : "");
     setEditCallTz((o?.call_tz ?? "ET") as "ET" | "CT" | "PT");
     setEditCallStatus((o?.call_status ?? "EST") as "CONF" | "EST");
+  };
+
+  const clearOverride = async () => {
+    if (!editing) return;
+    const ticker = editing.ticker;
+    if (!supabase) {
+      setEditing(null);
+      return;
+    }
+    const { error } = await supabase
+      .from("reit_event_override")
+      .delete()
+      .eq("ticker", ticker);
+    if (error) {
+      console.error(error);
+      setSupabaseError(error.message);
+      return;
+    }
+    setSupabaseError(null);
+    setEditing(null);
+    flashSaved();
   };
 
   const saveEdit = async () => {
@@ -751,6 +765,11 @@ export function EarningsCalendar() {
               <button type="button" className="modal-secondary" onClick={() => setEditing(null)}>
                 Cancel
               </button>
+              {editing && overrides[editing.ticker] ? (
+                <button type="button" className="modal-danger" onClick={() => void clearOverride()}>
+                  Clear Override
+                </button>
+              ) : null}
               <button type="button" className="modal-primary" onClick={() => void saveEdit()}>
                 Save
               </button>

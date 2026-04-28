@@ -763,11 +763,11 @@
     "ticker": "VRE",
     "name": "Veris Residential",
     "sector": "residential",
-    "releaseDate": "Apr 29, 2026",
-    "callDate": "Apr 30, 2026, TBD",
+    "releaseDate": "N/A",
+    "callDate": "N/A",
     "exchange": "NYSE",
-    "status": "EST",
-    "notes": "After close"
+    "status": "CONF",
+    "notes": "Being acquired — not reporting"
   },
   {
     "ticker": "AIV",

@@ -505,13 +505,21 @@ td {
 }
 
 .modal-secondary,
-.modal-primary {
+.modal-primary,
+.modal-danger {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 10px;
   font-weight: 600;
   padding: 7px 10px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.modal-danger {
+  background: #fff;
+  border: 1px solid #e53e3e;
+  color: #e53e3e;
+  margin-right: auto;
 }
 
 .modal-secondary {
