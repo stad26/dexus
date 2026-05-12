@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { REIT_ROWS } from "@/lib/reits";
 import { SECTOR_LABELS } from "@/lib/sector-labels";
@@ -435,6 +436,10 @@ export function EarningsCalendar() {
           </div>
         </div>
         <div className="meta">
+          <Link href="/bmo-conference" className="ics-link" style={{ fontSize: 10, fontWeight: 600 }}>
+            BMO Conference →
+          </Link>
+          <br />
           Generated: April 14, 2026
           <br />
           Sources: Company IR pages, SEC 8-Ks, press releases
