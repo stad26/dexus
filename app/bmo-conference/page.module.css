@@ -2,9 +2,57 @@
   /* desktop: no change */
 }
 
+/* ── Editable notes textarea ───────────────────────────── */
+.notesArea {
+  width: 100%;
+  min-height: 48px;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 3px 5px;
+  resize: vertical;
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+}
+
+.notesArea::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+.notesArea:hover {
+  border-color: var(--rule);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.notesArea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 2px rgba(28, 63, 96, 0.1);
+}
+
+.saveIndicator {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8px;
+  color: #888;
+  margin-top: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  display: block;
+}
+
+.saveIndicator.show {
+  opacity: 1;
+}
+
 /* ── Mobile card layout ────────────────────────────────── */
 @media (max-width: 680px) {
-  /* Collapse table into stacked cards */
   .tableWrap table,
   .tableWrap tbody,
   .tableWrap tr,
@@ -27,7 +75,6 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 
-  /* Each cell becomes a label + value row */
   .tableWrap td {
     display: flex;
     align-items: flex-start;
@@ -37,11 +84,7 @@
     font-size: 12px !important;
   }
 
-  .tableWrap td:last-child {
-    display: none; /* hide Pre-Meeting Notes — not useful on phone */
-  }
-
-  /* Label prefix from data-label */
+  /* Label prefix */
   .tableWrap td::before {
     content: attr(data-label);
     font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -55,28 +98,41 @@
     flex-shrink: 0;
   }
 
-  /* First cell (time) gets accent background as card header */
+  /* Time cell → card header bar */
   .tableWrap td:first-child {
     background: var(--accent);
     color: white;
-    font-size: 11px !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
-    padding: 8px 12px;
+    padding: 9px 12px;
   }
 
   .tableWrap td:first-child::before {
-    display: none; /* time label is implicit */
+    display: none;
   }
 
-  /* Sector cell — no label needed, tag is self-describing */
+  /* Sector tag — no label, self-describing */
   .tableWrap td:nth-child(4)::before {
     display: none;
     min-width: 0;
   }
 
-  /* Dexus chips cell — center-align inline */
-  .tableWrap td:nth-child(8) {
-    align-items: center;
+  /* Notes cell — full width textarea, no label prefix */
+  .tableWrap td:last-child {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .tableWrap td:last-child::before {
+    min-width: 0;
+    margin-bottom: 2px;
+  }
+
+  .notesArea {
+    font-size: 13px;
+    min-height: 56px;
+    border-color: var(--rule);
+    background: #fafaf8;
   }
 }
 
