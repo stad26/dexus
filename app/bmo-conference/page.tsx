@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "BMO 2026 Real Assets Conference — Dexus",
@@ -210,11 +211,11 @@ const WEDNESDAY: Meeting[] = [
 ];
 
 function AttendeeChip({ id }: { id: "DK" | "SD" }) {
-  const cls =
-    id === "DK"
-      ? "rev-chip dk on"
-      : "rev-chip sd on";
-  return <span className={cls}>{id}</span>;
+  return (
+    <span className={id === "DK" ? "rev-chip dk on" : "rev-chip sd on"}>
+      {id}
+    </span>
+  );
 }
 
 function MeetingTable({ meetings }: { meetings: Meeting[] }) {
@@ -236,15 +237,32 @@ function MeetingTable({ meetings }: { meetings: Meeting[] }) {
       <tbody>
         {meetings.map((m, i) => (
           <tr key={i}>
-            <td className="mono" style={{ whiteSpace: "nowrap", fontWeight: 600 }}>{m.time}</td>
-            <td>
+            {/* Time — on mobile: card header */}
+            <td
+              data-label=""
+              className="mono"
+              style={{ whiteSpace: "nowrap", fontWeight: 600 }}
+            >
+              {m.time}
+            </td>
+
+            {/* Ticker */}
+            <td data-label="Ticker">
               <span className="ticker">{m.ticker}</span>
             </td>
-            <td style={{ fontWeight: 600, fontSize: 10.5 }}>{m.company}</td>
-            <td>
+
+            {/* Company */}
+            <td data-label="Company" style={{ fontWeight: 600, fontSize: 10.5 }}>
+              {m.company}
+            </td>
+
+            {/* Sector */}
+            <td data-label="">
               <span className={`sector-tag ${m.sectorClass}`}>{m.sector}</span>
             </td>
-            <td style={{ textAlign: "center" }}>
+
+            {/* Type */}
+            <td data-label="Type" style={{ textAlign: "center" }}>
               <span
                 className="mono"
                 style={{
@@ -259,12 +277,16 @@ function MeetingTable({ meetings }: { meetings: Meeting[] }) {
                 {m.type}
               </span>
             </td>
-            <td style={{ textAlign: "center" }}>
+
+            {/* Room */}
+            <td data-label="Room" style={{ textAlign: "center" }}>
               <span className="mono" style={{ color: "var(--ink-light)" }}>
                 Fl {m.floor} · {m.room}
               </span>
             </td>
-            <td>
+
+            {/* Presenters */}
+            <td data-label="Mgmt">
               <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 {m.presenters.map((p, j) => (
                   <div key={j} style={{ fontSize: 10, lineHeight: 1.3 }}>
@@ -276,24 +298,25 @@ function MeetingTable({ meetings }: { meetings: Meeting[] }) {
                 ))}
               </div>
             </td>
-            <td>
+
+            {/* Dexus attendees */}
+            <td data-label="Dexus">
               <div className="reviewer-cell">
                 {m.attendees.map((a) => (
                   <AttendeeChip key={a} id={a} />
                 ))}
               </div>
             </td>
-            <td>
+
+            {/* Pre-meeting notes — hidden on mobile via CSS */}
+            <td data-label="Notes">
               <div
                 style={{
                   fontSize: 9,
                   color: "var(--ink-light)",
                   fontStyle: "italic",
-                  lineHeight: 1.5,
                 }}
-              >
-                {/* space for handwritten / printed notes */}
-              </div>
+              />
             </td>
           </tr>
         ))}
@@ -308,10 +331,10 @@ export default function BmoConferencePage() {
   const totalCount = tuesdayCount + wednesdayCount;
 
   return (
-    <div className="page">
-      <header>
+    <div className={`page ${styles.mobilePagePad}`}>
+      <header className={styles.mobileHeader}>
         <div>
-          <h1>
+          <h1 className={styles.mobileH1}>
             BMO <span>2026</span> REAL ASSETS CONFERENCE
           </h1>
           <div className="subhead">
@@ -320,7 +343,7 @@ export default function BmoConferencePage() {
             (PM) &amp; Stephanie Do (Analyst)
           </div>
         </div>
-        <div className="meta">
+        <div className={`meta ${styles.mobileMeta}`}>
           <Link href="/" className="ics-link">
             ← Earnings Calendar
           </Link>
@@ -331,8 +354,9 @@ export default function BmoConferencePage() {
         </div>
       </header>
 
-      {/* Day divider label */}
+      {/* Tuesday */}
       <div
+        className={styles.dayRow}
         style={{
           display: "flex",
           alignItems: "center",
@@ -354,18 +378,18 @@ export default function BmoConferencePage() {
         >
           TUESDAY · MAY 12, 2026
         </div>
-        <span
-          className="mono"
-          style={{ fontSize: 9, color: "var(--ink-light)" }}
-        >
+        <span className="mono" style={{ fontSize: 9, color: "var(--ink-light)" }}>
           {tuesdayCount} meetings · 8:45 AM – 3:25 PM
         </span>
       </div>
 
-      <MeetingTable meetings={TUESDAY} />
+      <div className={styles.tableWrap}>
+        <MeetingTable meetings={TUESDAY} />
+      </div>
 
-      {/* Day divider label */}
+      {/* Wednesday */}
       <div
+        className={styles.dayRow}
         style={{
           display: "flex",
           alignItems: "center",
@@ -387,15 +411,14 @@ export default function BmoConferencePage() {
         >
           WEDNESDAY · MAY 13, 2026
         </div>
-        <span
-          className="mono"
-          style={{ fontSize: 9, color: "var(--ink-light)" }}
-        >
+        <span className="mono" style={{ fontSize: 9, color: "var(--ink-light)" }}>
           {wednesdayCount} meetings · 9:30 – 11:40 AM
         </span>
       </div>
 
-      <MeetingTable meetings={WEDNESDAY} />
+      <div className={styles.tableWrap}>
+        <MeetingTable meetings={WEDNESDAY} />
+      </div>
 
       <div className="note" style={{ marginTop: 14 }}>
         <span className="dk-inline">DK</span> = David Kruth (PM) &nbsp;|&nbsp;{" "}

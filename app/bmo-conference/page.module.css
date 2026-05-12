@@ -1,0 +1,106 @@
+.tableWrap {
+  /* desktop: no change */
+}
+
+/* ── Mobile card layout ────────────────────────────────── */
+@media (max-width: 680px) {
+  /* Collapse table into stacked cards */
+  .tableWrap table,
+  .tableWrap tbody,
+  .tableWrap tr,
+  .tableWrap td {
+    display: block;
+    width: 100%;
+  }
+
+  .tableWrap thead {
+    display: none;
+  }
+
+  .tableWrap tr {
+    background: white !important;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Each cell becomes a label + value row */
+  .tableWrap td {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 12px !important;
+  }
+
+  .tableWrap td:last-child {
+    display: none; /* hide Pre-Meeting Notes — not useful on phone */
+  }
+
+  /* Label prefix from data-label */
+  .tableWrap td::before {
+    content: attr(data-label);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 8.5px;
+    font-weight: 600;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 58px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* First cell (time) gets accent background as card header */
+  .tableWrap td:first-child {
+    background: var(--accent);
+    color: white;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 8px 12px;
+  }
+
+  .tableWrap td:first-child::before {
+    display: none; /* time label is implicit */
+  }
+
+  /* Sector cell — no label needed, tag is self-describing */
+  .tableWrap td:nth-child(4)::before {
+    display: none;
+    min-width: 0;
+  }
+
+  /* Dexus chips cell — center-align inline */
+  .tableWrap td:nth-child(8) {
+    align-items: center;
+  }
+}
+
+/* ── Responsive page chrome ────────────────────────────── */
+@media (max-width: 680px) {
+  .mobilePagePad {
+    padding: 14px 14px 24px !important;
+  }
+
+  .mobileHeader {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  .mobileMeta {
+    text-align: left !important;
+  }
+
+  .mobileH1 {
+    font-size: 14px !important;
+  }
+
+  .dayRow {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
