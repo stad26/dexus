@@ -7,6 +7,8 @@ import styles from "./page.module.css";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
+type Attendee = "DK" | "SD";
+
 type Meeting = {
   time: string;
   company: string;
@@ -15,7 +17,7 @@ type Meeting = {
   floor: string;
   room: string;
   presenters: { name: string; title: string }[];
-  attendees: ("DK" | "SD")[];
+  attendees: Attendee[];
   sector: string;
   sectorClass: string;
 };
@@ -214,9 +216,21 @@ const WEDNESDAY: Meeting[] = [
 
 // ── Sub-components ─────────────────────────────────────────────────────────
 
-function AttendeeChip({ id }: { id: "DK" | "SD" }) {
+function AttendeeChip({
+  id,
+  active,
+  onToggle,
+}: {
+  id: Attendee;
+  active: boolean;
+  onToggle: (id: Attendee) => void;
+}) {
   return (
-    <span className={id === "DK" ? "rev-chip dk on" : "rev-chip sd on"}>
+    <span
+      className={`rev-chip ${id.toLowerCase()} ${active ? "on" : "off"}`}
+      onClick={() => onToggle(id)}
+      title={active ? `Remove ${id}` : `Add ${id}`}
+    >
       {id}
     </span>
   );
@@ -255,20 +269,26 @@ function NotesCell({ ticker, value, onChange, onSave, saveStatus }: NotesCellPro
 
 // ── Meeting table ──────────────────────────────────────────────────────────
 
+const ALL_ATTENDEES: Attendee[] = ["DK", "SD"];
+
 type MeetingTableProps = {
   meetings: Meeting[];
   notes: Record<string, string>;
   saveStatus: Record<string, "idle" | "saving" | "saved">;
+  attendeeOverrides: Record<string, Attendee[]>;
   onNoteChange: (ticker: string, value: string) => void;
   onNoteSave: (ticker: string, value: string) => void;
+  onAttendeeToggle: (ticker: string, id: Attendee) => void;
 };
 
 function MeetingTable({
   meetings,
   notes,
   saveStatus,
+  attendeeOverrides,
   onNoteChange,
   onNoteSave,
+  onAttendeeToggle,
 }: MeetingTableProps) {
   return (
     <table style={{ marginBottom: 0 }}>
@@ -286,73 +306,103 @@ function MeetingTable({
         </tr>
       </thead>
       <tbody>
-        {meetings.map((m) => (
-          <tr key={m.ticker}>
-            <td data-label="" className="mono" style={{ whiteSpace: "nowrap", fontWeight: 600 }}>
-              {m.time}
-            </td>
-            <td data-label="Ticker">
-              <span className="ticker">{m.ticker}</span>
-            </td>
-            <td data-label="Company" style={{ fontWeight: 600, fontSize: 10.5 }}>
-              {m.company}
-            </td>
-            <td data-label="">
-              <span className={`sector-tag ${m.sectorClass}`}>{m.sector}</span>
-            </td>
-            <td data-label="Type" style={{ textAlign: "center" }}>
-              <span
-                className="mono"
-                style={{
-                  fontSize: 9,
-                  background: "#eeeae2",
-                  borderRadius: 3,
-                  padding: "1px 6px",
-                  color: "var(--ink-light)",
-                  fontWeight: 600,
-                }}
-              >
-                {m.type}
-              </span>
-            </td>
-            <td data-label="Room" style={{ textAlign: "center" }}>
-              <span className="mono" style={{ color: "var(--ink-light)" }}>
-                Fl {m.floor} · {m.room}
-              </span>
-            </td>
-            <td data-label="Mgmt">
-              <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                {m.presenters.map((p, j) => (
-                  <div key={j} style={{ fontSize: 10, lineHeight: 1.3 }}>
-                    <span style={{ fontWeight: 600 }}>{p.name}</span>{" "}
-                    <span style={{ color: "var(--ink-light)", fontSize: 9 }}>
-                      {p.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </td>
-            <td data-label="Dexus">
-              <div className="reviewer-cell">
-                {m.attendees.map((a) => (
-                  <AttendeeChip key={a} id={a} />
-                ))}
-              </div>
-            </td>
-            <td data-label="Notes">
-              <NotesCell
-                ticker={m.ticker}
-                value={notes[m.ticker] ?? ""}
-                onChange={onNoteChange}
-                onSave={onNoteSave}
-                saveStatus={saveStatus[m.ticker] ?? "idle"}
-              />
-            </td>
-          </tr>
-        ))}
+        {meetings.map((m) => {
+          const activeAttendees = attendeeOverrides[m.ticker] ?? m.attendees;
+          return (
+            <tr key={m.ticker}>
+              <td data-label="" className="mono" style={{ whiteSpace: "nowrap", fontWeight: 600 }}>
+                {m.time}
+              </td>
+              <td data-label="Ticker">
+                <span className="ticker">{m.ticker}</span>
+              </td>
+              <td data-label="Company" style={{ fontWeight: 600, fontSize: 10.5 }}>
+                {m.company}
+              </td>
+              <td data-label="">
+                <span className={`sector-tag ${m.sectorClass}`}>{m.sector}</span>
+              </td>
+              <td data-label="Type" style={{ textAlign: "center" }}>
+                <span
+                  className="mono"
+                  style={{
+                    fontSize: 9,
+                    background: "#eeeae2",
+                    borderRadius: 3,
+                    padding: "1px 6px",
+                    color: "var(--ink-light)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {m.type}
+                </span>
+              </td>
+              <td data-label="Room" style={{ textAlign: "center" }}>
+                <span className="mono" style={{ color: "var(--ink-light)" }}>
+                  Fl {m.floor} · {m.room}
+                </span>
+              </td>
+              <td data-label="Mgmt">
+                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {m.presenters.map((p, j) => (
+                    <div key={j} style={{ fontSize: 10, lineHeight: 1.3 }}>
+                      <span style={{ fontWeight: 600 }}>{p.name}</span>{" "}
+                      <span style={{ color: "var(--ink-light)", fontSize: 9 }}>
+                        {p.title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </td>
+              <td data-label="Dexus">
+                <div className="reviewer-cell">
+                  {ALL_ATTENDEES.map((a) => (
+                    <AttendeeChip
+                      key={a}
+                      id={a}
+                      active={activeAttendees.includes(a)}
+                      onToggle={(id) => onAttendeeToggle(m.ticker, id)}
+                    />
+                  ))}
+                </div>
+              </td>
+              <td data-label="Notes">
+                <NotesCell
+                  ticker={m.ticker}
+                  value={notes[m.ticker] ?? ""}
+                  onChange={onNoteChange}
+                  onSave={onNoteSave}
+                  saveStatus={saveStatus[m.ticker] ?? "idle"}
+                />
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
+}
+
+// ── localStorage helpers ───────────────────────────────────────────────────
+
+const LS_NOTES_KEY = "bmo_2026_notes";
+const LS_ATTENDEES_KEY = "bmo_2026_attendees";
+
+function lsGet<T>(key: string, fallback: T): T {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function lsSet(key: string, value: unknown) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // ignore
+  }
 }
 
 // ── Main client component ──────────────────────────────────────────────────
@@ -361,21 +411,31 @@ export function BmoConferenceClient() {
   const supabase = getSupabaseBrowser();
   const [notes, setNotes] = useState<Record<string, string>>({});
   const [saveStatus, setSaveStatus] = useState<Record<string, "idle" | "saving" | "saved">>({});
+  const [attendeeOverrides, setAttendeeOverrides] = useState<Record<string, Attendee[]>>({});
   const saveTimers = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
-  // Load notes from Supabase on mount
+  // Load notes from localStorage first (always), then overlay Supabase data
   useEffect(() => {
+    const local = lsGet<Record<string, string>>(LS_NOTES_KEY, {});
+    setNotes(local);
+
     if (!supabase) return;
     supabase
       .from("bmo_2026_notes")
       .select("ticker, notes")
       .then(({ data }) => {
-        if (!data) return;
-        const map: Record<string, string> = {};
-        for (const row of data) map[row.ticker] = row.notes ?? "";
-        setNotes(map);
+        if (!data || data.length === 0) return;
+        const remote: Record<string, string> = {};
+        for (const row of data) remote[row.ticker] = row.notes ?? "";
+        setNotes((prev) => ({ ...prev, ...remote }));
       });
   }, [supabase]);
+
+  // Load attendee overrides from localStorage
+  useEffect(() => {
+    const stored = lsGet<Record<string, Attendee[]>>(LS_ATTENDEES_KEY, {});
+    setAttendeeOverrides(stored);
+  }, []);
 
   const handleNoteChange = useCallback((ticker: string, value: string) => {
     setNotes((prev) => ({ ...prev, [ticker]: value }));
@@ -383,24 +443,19 @@ export function BmoConferenceClient() {
 
   const handleNoteSave = useCallback(
     async (ticker: string, value: string) => {
-      // Clear any pending "saved" reset timer
       if (saveTimers.current[ticker]) clearTimeout(saveTimers.current[ticker]);
-
       setSaveStatus((prev) => ({ ...prev, [ticker]: "saving" }));
 
+      // Always persist to localStorage
+      const stored = lsGet<Record<string, string>>(LS_NOTES_KEY, {});
+      stored[ticker] = value;
+      lsSet(LS_NOTES_KEY, stored);
+
+      // Also sync to Supabase if configured
       if (supabase) {
         await supabase
           .from("bmo_2026_notes")
           .upsert({ ticker, notes: value, updated_at: new Date().toISOString() });
-      } else {
-        // Fallback: localStorage
-        try {
-          const stored = JSON.parse(localStorage.getItem("bmo_2026_notes") ?? "{}");
-          stored[ticker] = value;
-          localStorage.setItem("bmo_2026_notes", JSON.stringify(stored));
-        } catch {
-          // ignore
-        }
       }
 
       setSaveStatus((prev) => ({ ...prev, [ticker]: "saved" }));
@@ -411,31 +466,35 @@ export function BmoConferenceClient() {
     [supabase],
   );
 
-  // Load from localStorage if Supabase unavailable
-  useEffect(() => {
-    if (supabase) return;
-    try {
-      const stored = JSON.parse(localStorage.getItem("bmo_2026_notes") ?? "{}");
-      setNotes(stored);
-    } catch {
-      // ignore
-    }
-  }, [supabase]);
+  const handleAttendeeToggle = useCallback((ticker: string, id: Attendee) => {
+    setAttendeeOverrides((prev) => {
+      const allMeetings = [...TUESDAY, ...WEDNESDAY];
+      const meeting = allMeetings.find((m) => m.ticker === ticker);
+      const current = prev[ticker] ?? meeting?.attendees ?? [];
+      const next = current.includes(id)
+        ? current.filter((a) => a !== id)
+        : [...current, id];
+      const updated = { ...prev, [ticker]: next };
+      lsSet(LS_ATTENDEES_KEY, updated);
+      return updated;
+    });
+  }, []);
 
   const tuesdayCount = TUESDAY.length;
   const wednesdayCount = WEDNESDAY.length;
   const totalCount = tuesdayCount + wednesdayCount;
 
-  const tableProps = { notes, saveStatus, onNoteChange: handleNoteChange, onNoteSave: handleNoteSave };
+  const tableProps = {
+    notes,
+    saveStatus,
+    attendeeOverrides,
+    onNoteChange: handleNoteChange,
+    onNoteSave: handleNoteSave,
+    onAttendeeToggle: handleAttendeeToggle,
+  };
 
   return (
     <div className={`page ${styles.mobilePagePad}`}>
-      {!supabase && (
-        <div className="config-banner" role="status">
-          <strong>Note:</strong> Supabase not configured — notes are saving to this browser only and won&apos;t sync across devices.
-        </div>
-      )}
-
       <header className={styles.mobileHeader}>
         <div>
           <h1 className={styles.mobileH1}>
