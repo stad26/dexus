@@ -440,6 +440,10 @@ export function EarningsCalendar() {
             BMO Conference →
           </Link>
           <br />
+          <Link href="/nareit-2026" className="ics-link" style={{ fontSize: 10, fontWeight: 600 }}>
+            NAREIT REITweek →
+          </Link>
+          <br />
           Generated: April 14, 2026
           <br />
           Sources: Company IR pages, SEC 8-Ks, press releases
