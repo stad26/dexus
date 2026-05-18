@@ -101,21 +101,12 @@ const TUESDAY: DaySlot[] = [
     bmo: [bmo("bmo-frt", "FRT", "Federal Realty Investment Trust", "Retail", "s-retail", ["SD"])],
     jpm: [],
   },
-  // Three-way concurrent: DEA + KIM (BMO), CURB (JPM)
+  // KIM (BMO) and CURB (JPM) concurrent
   {
     kind: "meetings",
     time: "3:00 PM",
-    bmo: [
-      bmo("bmo-dea", "DEA", "Easterly Government Properties", "Gov't / Office", "s-office"),
-      bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail"),
-    ],
+    bmo: [bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail")],
     jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["SD"])],
-  },
-  {
-    kind: "meetings",
-    time: "5:00 PM",
-    bmo: [bmo("bmo-xrn", "XRN", "Chiron", "Healthcare", "s-healthcare")],
-    jpm: [],
   },
 ];
 
@@ -130,12 +121,6 @@ const WEDNESDAY: DaySlot[] = [
     kind: "meetings",
     time: "9:00 AM",
     bmo: [bmo("bmo-hr", "HR", "Healthcare Realty Trust", "Healthcare", "s-healthcare")],
-    jpm: [],
-  },
-  {
-    kind: "meetings",
-    time: "10:00 AM",
-    bmo: [bmo("bmo-ltc", "LTC", "LTC Properties", "Healthcare", "s-healthcare")],
     jpm: [],
   },
   // BRX (BMO) and IVT (JPM) concurrent at 11 AM
@@ -155,12 +140,6 @@ const WEDNESDAY: DaySlot[] = [
     kind: "meetings",
     time: "2:00 PM",
     bmo: [bmo("bmo-irt", "IRT", "Independence Realty Trust", "Residential", "s-residential")],
-    jpm: [],
-  },
-  {
-    kind: "meetings",
-    time: "3:00 PM",
-    bmo: [bmo("bmo-ahr", "AHR", "American Healthcare REIT", "Healthcare", "s-healthcare")],
     jpm: [],
   },
   {
