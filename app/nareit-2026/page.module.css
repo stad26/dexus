@@ -304,6 +304,93 @@
   display: block;
 }
 
+/* ── Attendee list (cocktails / special events) ────────────── */
+
+.attendeeDetails {
+  margin-top: 7px;
+}
+
+.attendeeSummary {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink-light);
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.3px;
+}
+
+.attendeeSummary:hover {
+  color: var(--ink);
+}
+
+.attendeeGroupLabel {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink-light);
+  margin: 8px 0 4px;
+}
+
+.attendeeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.attendeeChip {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 9px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  width: 210px;
+  flex-shrink: 0;
+}
+
+.chipPending {
+  background: white;
+  border-color: #ddd;
+}
+
+.chipBmo {
+  background: #dce8f5;
+  border-color: #8aaecf;
+}
+
+.chipName {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.chipTitle {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.3;
+  margin-top: 1px;
+}
+
+.chipFirm {
+  font-size: 9px;
+  color: var(--ink-light);
+  line-height: 1.3;
+  font-style: italic;
+}
+
+.chipBio {
+  font-size: 8.5px;
+  color: var(--ink-light);
+  line-height: 1.4;
+  margin-top: 3px;
+  border-top: 1px solid #eee;
+  padding-top: 3px;
+}
+
 /* ── Mobile ────────────────────────────────────────────────── */
 
 @media (max-width: 680px) {

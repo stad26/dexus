@@ -28,6 +28,14 @@ type MeetingSlot = {
   jpm: NareitMeeting[];
 };
 
+type EventAttendee = {
+  name: string;
+  title: string;
+  firm: string;
+  bio: string;
+  group: "investor" | "bmo";
+};
+
 // A special full-row event (networking, reception, etc.)
 type SpecialSlot = {
   kind: "special";
@@ -35,6 +43,7 @@ type SpecialSlot = {
   label: string;
   subtitle?: string;
   color?: string; // override background
+  attendees?: EventAttendee[];
 };
 
 type DaySlot = MeetingSlot | SpecialSlot;
@@ -107,6 +116,108 @@ const TUESDAY: DaySlot[] = [
     time: "3:00 PM",
     bmo: [bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail")],
     jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["SD"])],
+  },
+  {
+    kind: "special",
+    time: "4:00–6:00 PM",
+    label: "REIT Cocktails @ Ocean Prime (patio outdoors)",
+    subtitle: "Ocean Prime · Swing by when you can!",
+    color: "#e8f4f0",
+    attendees: [
+      {
+        name: "Alysia Rodgers", firm: "Calvert Research & Management", group: "investor",
+        title: "VP, Real Estate Responsible Investing",
+        bio: "Leads real estate responsible investing at Calvert (Morgan Stanley), applying ESG principles to REIT evaluation and impact investing.",
+      },
+      {
+        name: "Valeria Loo-Kung", firm: "DWS Group", group: "investor",
+        title: "Equity Analyst",
+        bio: "Covers real estate equities at DWS; prior experience at BMO Capital Markets, Blackstone's LivCor, and urban planning.",
+      },
+      {
+        name: "Ying Zheng", firm: "Schonfeld Strategic Advisors", group: "investor",
+        title: "Analyst",
+        bio: "REIT-focused analyst within Schonfeld's fundamental equity pod; multi-strategy hedge fund with ~$14B AUM.",
+      },
+      {
+        name: "Diane Wade, CFA", firm: "CBRE Investment Management", group: "investor",
+        title: "Head of Sustainability, Listed Securities",
+        bio: "Leads sustainability for CBRE IM's listed real assets strategies; co-chairs the Listed Real Assets Sustainability Committee.",
+      },
+      {
+        name: "Kristin Brown", firm: "First Sentier Investors", group: "investor",
+        title: "Investor Relations Officer",
+        bio: "IRO at First Sentier with a sell-side REIT research background; bridges equity analysis expertise with institutional investor relations.",
+      },
+      {
+        name: "Dana Guess", firm: "BlackRock", group: "investor",
+        title: "VP, Investment Stewardship",
+        bio: "Part of BlackRock's Investment Stewardship team, engaging with companies on governance, sustainability, and shareholder interests.",
+      },
+      {
+        name: "Jennifer Zhao", firm: "AEW Capital Management", group: "investor",
+        title: "VP, Real Estate Securities",
+        bio: "Covers listed REITs at AEW Capital Management, one of the world's largest real estate investment managers (~$90B AUM).",
+      },
+      {
+        name: "Christina Chiu", firm: "Empire State Realty Trust", group: "investor",
+        title: "President",
+        bio: "Promoted to President of ESRT in Feb 2024 after serving as CFO/COO; prior 18 years at Morgan Stanley as MD overseeing global listed real assets.",
+      },
+      {
+        name: "Alua Askarbek, CFA", firm: "Omega Healthcare Investors", group: "investor",
+        title: "Director, Corporate Development",
+        bio: "Leads corporate development at Omega Healthcare (OHI), a healthcare REIT focused on skilled nursing and senior living; previously at BlackRock in global real asset securities.",
+      },
+      {
+        name: "Jessica Long", firm: "NAREIT", group: "investor",
+        title: "SVP, Environmental Stewardship & Sustainability",
+        bio: "NAREIT's sustainability lead; staff liaison for the Real Estate Sustainability Council and steward of environmental programs for member REITs.",
+      },
+      {
+        name: "Laura Rapaport", firm: "North Bridge", group: "investor",
+        title: "Founder & CEO",
+        bio: "Founded North Bridge in 2021, a NYC-based C-PACE lender providing sustainable financing to institutional CRE borrowers; ex-L&L Holding and Tishman Speyer.",
+      },
+      {
+        name: "Robin Fisher", firm: "Blace", group: "investor",
+        title: "Founder & CEO",
+        bio: "Founded Blace, an event-tech marketplace connecting clients with premium venues and experiences; named LA Magazine 2024 Woman of Impact.",
+      },
+      {
+        name: "Jill Sawyer", firm: "Federal Realty Investment Trust", group: "investor",
+        title: "SVP, Head of Investor Relations",
+        bio: "Leads IR at Federal Realty (FRT); 15+ years spanning IR, capital markets, and equity research.",
+      },
+      { name: "John P. Kim",      firm: "BMO Capital Markets", group: "bmo",
+        title: "Managing Director, Senior REIT Analyst",
+        bio: "Covering U.S. and APAC REITs since 2002; prior stints at CLSA and BofA Merrill Lynch leading top-ranked Asia property research.",
+      },
+      { name: "Juan Sanabria",    firm: "BMO Capital Markets", group: "bmo",
+        title: "Managing Director, Senior REIT Analyst",
+        bio: "Covers 70+ listed U.S. REITs; ex-Head of IR at Ventas and BofA equity analyst; recognized for climate-risk real estate research.",
+      },
+      { name: "Ari Klein",        firm: "BMO Capital Markets", group: "bmo",
+        title: "Director, Equity Research",
+        bio: "Covers ~27 REIT and real estate stocks at BMO; prior experience at Bank of America.",
+      },
+      { name: "Eric Borden",      firm: "BMO Capital Markets", group: "bmo",
+        title: "VP, Equity Research",
+        bio: "Covers net lease and diversified REITs (STAG, ADC, EPRT); recently initiated on FrontView REIT with Outperform.",
+      },
+      { name: "Victoria DeOdene", firm: "BMO Capital Markets", group: "bmo",
+        title: "Associate, Equity Sales",
+        bio: "Equity sales desk at BMO Capital Markets, supporting institutional real estate and financial sector clients.",
+      },
+      { name: "Jacqueline Beer",  firm: "BMO Capital Markets", group: "bmo",
+        title: "MD, Head of Strategic Initiatives & Partnerships",
+        bio: "15+ years across strategy, innovation, PE, investment banking, and management consulting at BMO.",
+      },
+      { name: "Nana Petrosyan",   firm: "BMO Capital Markets", group: "bmo",
+        title: "Research/Onboarding Coordinator, Equity Sales",
+        bio: "Supports BMO's equity sales team with research coordination and client onboarding.",
+      },
+    ],
   },
 ];
 
@@ -303,6 +414,8 @@ function DayTable({
       <tbody>
         {slots.map((slot, i) => {
           if (slot.kind === "special") {
+            const investors = slot.attendees?.filter((a) => a.group === "investor") ?? [];
+            const bmoAttendees = slot.attendees?.filter((a) => a.group === "bmo") ?? [];
             return (
               <tr key={i} className={styles.specialRow}>
                 <td className={`mono ${styles.timeCell}`}>{slot.time}</td>
@@ -314,6 +427,42 @@ function DayTable({
                   <span className={styles.specialLabel}>{slot.label}</span>
                   {slot.subtitle && (
                     <span className={styles.specialSub}>{slot.subtitle}</span>
+                  )}
+                  {slot.attendees && slot.attendees.length > 0 && (
+                    <details className={styles.attendeeDetails}>
+                      <summary className={styles.attendeeSummary}>
+                        {slot.attendees.length} attendees
+                      </summary>
+                      {investors.length > 0 && (
+                        <>
+                          <div className={styles.attendeeGroupLabel}>Investors &amp; Corporates</div>
+                          <div className={styles.attendeeGrid}>
+                            {investors.map((a) => (
+                              <div key={a.name} className={`${styles.attendeeChip} ${styles.chipPending}`}>
+                                <span className={styles.chipName}>{a.name}</span>
+                                <span className={styles.chipTitle}>{a.title}</span>
+                                <span className={styles.chipFirm}>{a.firm}</span>
+                                <span className={styles.chipBio}>{a.bio}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {bmoAttendees.length > 0 && (
+                        <>
+                          <div className={styles.attendeeGroupLabel}>BMO Capital Markets</div>
+                          <div className={styles.attendeeGrid}>
+                            {bmoAttendees.map((a) => (
+                              <div key={a.name} className={`${styles.attendeeChip} ${styles.chipBmo}`}>
+                                <span className={styles.chipName}>{a.name}</span>
+                                <span className={styles.chipTitle}>{a.title}</span>
+                                <span className={styles.chipBio}>{a.bio}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </details>
                   )}
                 </td>
               </tr>
@@ -483,7 +632,7 @@ export function NareitClient() {
           TUESDAY · JUNE 2, 2026
         </div>
         <span className="mono" style={{ fontSize: 9, color: "var(--ink-light)" }}>
-          {tuesdayMeetings} meetings · 8:00 AM – 5:00 PM
+          {tuesdayMeetings} meetings · 8:00 AM – 6:00 PM
         </span>
       </div>
       <div className={styles.tableWrap}>
