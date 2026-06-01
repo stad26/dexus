@@ -86,7 +86,7 @@ const TUESDAY: DaySlot[] = [
     time: "8:00 AM",
     bmo: [],
     jpm: [jpm("jpm-lxp", "LXP", "LXP Industrial Trust", "Industrial", "s-industrial", ["DK", "SD"], false, {
-      location: "New York Hilton Midtown · Suite 612",
+      location: "Hilton Club ·Suite 612",
       jpmAttendee: "Anthony Paolone",
       corpAttendees: [
         { name: "Will Eglin", title: "Chairman & CEO" },
@@ -100,7 +100,7 @@ const TUESDAY: DaySlot[] = [
     kind: "meetings",
     time: "9:00 AM",
     bmo: [
-      bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["SD"], {
+      bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["DK"], {
         location: "Hilton Club · Suite 4225",
         corpAttendees: [
           { name: "Laura Clark", title: "CEO" },
@@ -134,7 +134,7 @@ const TUESDAY: DaySlot[] = [
       ],
     })],
     jpm: [jpm("jpm-akr", "AKR", "Acadia Realty Trust", "Retail", "s-retail", ["DK", "SD"], false, {
-      location: "New York Hilton Midtown · Suite 4341",
+      location: "Hilton Club ·Suite 4341",
       jpmAttendee: "Michael Mueller",
       corpAttendees: [
         { name: "John Gottfried", title: "CFO" },
@@ -146,7 +146,7 @@ const TUESDAY: DaySlot[] = [
     kind: "meetings",
     time: "1:00 PM",
     bmo: [
-      bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["SD"], {
+      bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["DK"], {
         location: "Hilton Club · Suite 4329",
         corpAttendees: [
           { name: "Charles Young", title: "CEO" },
@@ -161,7 +161,7 @@ const TUESDAY: DaySlot[] = [
     ],
     jpm: [
       jpm("jpm-cube", "CUBE", "CubeSmart", "Self Storage", "s-diversified", ["DK", "SD"], false, {
-        location: "New York Hilton Midtown · FL 2, Clinton Room",
+        location: "Hilton Club ·FL 2, Clinton Room",
         jpmAttendee: "Michael Mueller",
         corpAttendees: [
           { name: "Chris Marr", title: "CEO" },
@@ -171,7 +171,7 @@ const TUESDAY: DaySlot[] = [
         ],
       }),
       jpm("jpm-safe", "SAFE", "Safehold", "Net Lease", "s-net-lease", ["DK", "SD"], false, {
-        location: "New York Hilton Midtown · Suite 521",
+        location: "Hilton Club ·Suite 521",
         jpmAttendee: "Anthony Paolone",
         corpAttendees: [
           { name: "Jay Sugarman", title: "Chairman & CEO" },
@@ -201,12 +201,12 @@ const TUESDAY: DaySlot[] = [
     time: "3:00 PM",
     bmo: [
       bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail"),
-      bmo("bmo-stag", "STAG", "STAG Industrial", "Industrial", "s-industrial", ["SD"], {
+      bmo("bmo-stag", "STAG", "STAG Industrial", "Industrial", "s-industrial", ["DK"], {
         location: "Hilton Club · Suite 506",
       }),
     ],
-    jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["DK", "SD"], false, {
-      location: "New York Hilton Midtown · Suite 540",
+    jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["SD"], false, {
+      location: "Hilton Club ·Suite 540",
       jpmAttendee: "Hong Zhang",
       corpAttendees: [
         { name: "David Lukes", title: "CEO" },
@@ -342,7 +342,7 @@ const WEDNESDAY: DaySlot[] = [
   {
     kind: "meetings",
     time: "9:00 AM",
-    bmo: [bmo("bmo-hr", "HR", "Healthcare Realty Trust", "Healthcare", "s-healthcare", ["SD"], {
+    bmo: [bmo("bmo-hr", "HR", "Healthcare Realty Trust", "Healthcare", "s-healthcare", ["DK"], {
       location: "Hilton Club · Suite 4233",
       corpAttendees: [
         { name: "Pete Scott", title: "CEO" },
@@ -357,7 +357,7 @@ const WEDNESDAY: DaySlot[] = [
     time: "10:00 AM",
     bmo: [],
     jpm: [jpm("jpm-cuz", "CUZ", "Cousins Properties", "Office", "s-office", ["DK", "SD"], false, {
-      location: "New York Hilton Midtown · Bellow Lobby, Concourse H",
+      location: "Hilton Club ·Bellow Lobby, Concourse H",
       jpmAttendee: "Anthony Paolone",
       corpAttendees: [
         { name: "Colin Connolly", title: "CEO" },
@@ -381,7 +381,7 @@ const WEDNESDAY: DaySlot[] = [
       ],
     })],
     jpm: [jpm("jpm-ivt", "IVT", "InvenTrust Properties", "Retail", "s-retail", ["DK", "SD"], false, {
-      location: "New York Hilton Midtown · ReitPac Suite",
+      location: "Hilton Club ·ReitPac Suite",
       jpmAttendee: "Hong Zhang",
       corpAttendees: [
         { name: "Daniel Busch", title: "President & CEO" },
@@ -401,7 +401,7 @@ const WEDNESDAY: DaySlot[] = [
   {
     kind: "meetings",
     time: "2:00 PM",
-    bmo: [bmo("bmo-irt", "IRT", "Independence Realty Trust", "Residential", "s-residential", ["SD"], {
+    bmo: [bmo("bmo-irt", "IRT", "Independence Realty Trust", "Residential", "s-residential", ["DK"], {
       location: "Bryant · 2nd Floor",
       corpAttendees: [
         { name: "Scott Schaeffer", title: "CEO" },
