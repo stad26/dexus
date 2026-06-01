@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NAREIT REITweek 2026 — Dexus Schedule</title>
+<style>
+  @page {
+    size: A4 landscape;
+    margin: 10mm 12mm;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 7.5pt;
+    color: #1a2332;
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2.5px solid #1c3f60;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #1c3f60;
+    letter-spacing: -0.3px;
+  }
+  .page-title span { color: #7a1c3a; }
+  .page-sub {
+    font-size: 7pt;
+    color: #555;
+    margin-top: 2px;
+  }
+  .page-meta {
+    text-align: right;
+    font-size: 7pt;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .legend-bmo { color: #1c3f60; font-weight: 700; font-size: 7pt; }
+  .legend-jpm { color: #7a1c3a; font-weight: 700; font-size: 7pt; }
+  .legend-dk  { background: #0d7a5f; color: white; font-weight: 700; font-size: 6.5pt; padding: 1px 5px; border-radius: 3px; }
+  .legend-sd  { background: #5a1a8a; color: white; font-weight: 700; font-size: 6.5pt; padding: 1px 5px; border-radius: 3px; }
+  .legend-note { font-size: 6.5pt; color: #777; margin-left: 4px; }
+
+  /* ── Day section ── */
+  .day-section { margin-bottom: 8px; }
+  .day-header {
+    font-size: 8pt;
+    font-weight: 700;
+    color: white;
+    background: #1c3f60;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .day-header.wed { background: #7a1c3a; }
+  .day-count { font-size: 6.5pt; font-weight: 400; opacity: 0.85; }
+
+  /* ── Table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  thead th {
+    font-size: 6.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px;
+    text-align: left;
+    background: #f7f8fa;
+  }
+  tbody tr { border-bottom: 1px solid #e8e8e8; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 3px 5px; vertical-align: top; line-height: 1.35; }
+  tbody tr.special-row td { background: #f5f5f5; }
+
+  /* ── Column widths ── */
+  .col-time     { width: 52px; }
+  .col-broker   { width: 30px; }
+  .col-ticker   { width: 100px; }
+  .col-location { width: 130px; }
+  .col-dexus    { width: 36px; }
+  .col-attend   { width: auto; }
+
+  /* ── Cell content ── */
+  .time {
+    font-size: 7pt;
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+  }
+  .broker-bmo {
+    display: inline-block;
+    font-size: 6pt;
+    font-weight: 700;
+    color: white;
+    background: #1c3f60;
+    padding: 1px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .broker-jpm {
+    display: inline-block;
+    font-size: 6pt;
+    font-weight: 700;
+    color: white;
+    background: #7a1c3a;
+    padding: 1px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .ticker {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #1c3f60;
+    display: block;
+  }
+  .ticker.jpm-ticker { color: #7a1c3a; }
+  .company {
+    font-size: 6.5pt;
+    color: #444;
+    display: block;
+  }
+  .location {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+  }
+  .jpm-contact {
+    font-size: 6pt;
+    color: #7a1c3a;
+    display: block;
+    margin-top: 1px;
+  }
+  .chip-dk {
+    display: inline-block;
+    background: #0d7a5f;
+    color: white;
+    font-size: 6pt;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+    margin-right: 2px;
+  }
+  .chip-sd {
+    display: inline-block;
+    background: #5a1a8a;
+    color: white;
+    font-size: 6pt;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+  .attendees {
+    font-size: 6.5pt;
+    color: #333;
+    line-height: 1.5;
+  }
+  .attendee-name { font-weight: 600; }
+  .attendee-title { color: #777; }
+
+  /* special rows */
+  .special-label {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #1a2332;
+  }
+  .special-sub {
+    font-size: 6.5pt;
+    color: #666;
+    display: block;
+    margin-top: 1px;
+  }
+
+  /* page break between days */
+  .page-break { page-break-before: always; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 6px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+    font-size: 6pt;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <div class="page-title">NAREIT <span>REITweek</span> 2026</div>
+    <div class="page-sub">New York Hilton Midtown &nbsp;·&nbsp; June 2–3, 2026 &nbsp;·&nbsp; BMO Capital Markets &amp; JPMorgan</div>
+  </div>
+  <div class="page-meta">
+    <strong>David Kruth</strong> (PM) &nbsp;·&nbsp; <strong>Stephanie Do</strong> (Analyst)<br>
+    Dexus Asset Management<br>
+    Confidential
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <span class="legend-bmo">■ BMO Capital Markets</span>
+  <span class="legend-jpm">■ JPMorgan</span>
+  &nbsp;
+  <span class="legend-dk">DK</span> David Kruth
+  <span class="legend-sd">SD</span> Stephanie Do
+  <span class="legend-note">All meetings at New York Hilton Midtown unless otherwise noted.</span>
+</div>
+
+<!-- ═══════════ TUESDAY ═══════════ -->
+<div class="day-section">
+  <div class="day-header">
+    TUESDAY · JUNE 2, 2026
+    <span class="day-count">10 meetings &amp; events</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="col-time">Time</th>
+        <th class="col-broker">Broker</th>
+        <th class="col-ticker">Ticker / Company</th>
+        <th class="col-location">Location</th>
+        <th class="col-dexus">Dexus</th>
+        <th class="col-attend">Corporate Attendees</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 8:00 AM — LXP (JPM) -->
+      <tr>
+        <td><span class="time">8:00 AM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">LXP</span>
+          <span class="company">LXP Industrial Trust</span>
+        </td>
+        <td>
+          <span class="location">Suite 612</span>
+          <span class="jpm-contact">JPM: Anthony Paolone</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Will Eglin</span> <span class="attendee-title">Chairman &amp; CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Nathan Brunner</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Brendan Mullinix</span> <span class="attendee-title">EVP &amp; CIO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">James Dudley</span> <span class="attendee-title">EVP, Asset Management</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 9:00 AM — REXR (BMO) -->
+      <tr>
+        <td><span class="time">9:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">REXR</span>
+          <span class="company">Rexford Industrial Realty</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 4225</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Laura Clark</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Michael Fitzmaurice</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Mikayla Lynch</span> <span class="attendee-title">IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 9:00 AM — CUBE (BMO) -->
+      <tr>
+        <td><span class="time">9:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">CUBE</span>
+          <span class="company">CubeSmart</span>
+        </td>
+        <td><span class="location">Hilton Club · Clinton Suite, 2nd Floor</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td><div class="attendees">—</div></td>
+      </tr>
+
+      <!-- 10:00 AM — ESRT (BMO) -->
+      <tr>
+        <td><span class="time">10:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">ESRT</span>
+          <span class="company">Empire State Realty Trust</span>
+        </td>
+        <td><span class="location">Hilton Club · Networking Room</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td><div class="attendees">—</div></td>
+      </tr>
+
+      <!-- 11:00 AM — EGP (BMO) -->
+      <tr>
+        <td><span class="time">11:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">EGP</span>
+          <span class="company">EastGroup Properties</span>
+        </td>
+        <td><span class="location">Hilton Club · REITPac Suite</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Staci Tyler</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Brent Wood</span> <span class="attendee-title">COO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Casey Edgecombe</span> <span class="attendee-title">IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 11:00 AM — AKR (JPM) -->
+      <tr>
+        <td><span class="time">11:00 AM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">AKR</span>
+          <span class="company">Acadia Realty Trust</span>
+        </td>
+        <td>
+          <span class="location">Suite 4341</span>
+          <span class="jpm-contact">JPM: Michael Mueller</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">John Gottfried</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">John Damoulis</span> <span class="attendee-title">Corporate Finance &amp; Portfolio Analyst</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 1:00 PM — TRNO (BMO) -->
+      <tr>
+        <td><span class="time">1:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">TRNO</span>
+          <span class="company">Terreno Realty</span>
+        </td>
+        <td><span class="location">Hilton Club · Networking Room</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td><div class="attendees">—</div></td>
+      </tr>
+
+      <!-- 1:00 PM — SUI (BMO) -->
+      <tr>
+        <td><span class="time">1:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">SUI</span>
+          <span class="company">Sun Communities</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 4329</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Charles Young</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">John McLaren</span> <span class="attendee-title">COO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Aaron Weiss</span> <span class="attendee-title">CIO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Fernando Castro-Caratini</span> <span class="attendee-title">CFO</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 1:00 PM — CUBE (JPM) -->
+      <tr>
+        <td><span class="time">1:00 PM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">CUBE</span>
+          <span class="company">CubeSmart</span>
+        </td>
+        <td>
+          <span class="location">FL 2, Clinton Room</span>
+          <span class="jpm-contact">JPM: Michael Mueller</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Chris Marr</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Tim Martin</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Josh Schutzer</span> <span class="attendee-title">VP Finance</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Brett Hoffman</span> <span class="attendee-title">SVP Store Operations</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 1:00 PM — SAFE (JPM) -->
+      <tr>
+        <td><span class="time">1:00 PM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">SAFE</span>
+          <span class="company">Safehold</span>
+        </td>
+        <td>
+          <span class="location">Suite 521</span>
+          <span class="jpm-contact">JPM: Anthony Paolone</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Jay Sugarman</span> <span class="attendee-title">Chairman &amp; CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Michael Trachtenberg</span> <span class="attendee-title">President</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Brett Asnas</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Pearse Hoffman</span> <span class="attendee-title">SVP, Capital Markets &amp; IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 2:00 PM — FRT (BMO) -->
+      <tr>
+        <td><span class="time">2:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">FRT</span>
+          <span class="company">Federal Realty Investment Trust</span>
+        </td>
+        <td><span class="location">Hilton Club · REITPac Suite</span></td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Don Wood</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Dan Guglielmone</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Jill Sawyer</span> <span class="attendee-title">IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 3:00 PM — STAG (BMO) -->
+      <tr>
+        <td><span class="time">3:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">STAG</span>
+          <span class="company">STAG Industrial</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 506</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td><div class="attendees">—</div></td>
+      </tr>
+
+      <!-- 3:00 PM — CURB (JPM) -->
+      <tr>
+        <td><span class="time">3:00 PM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">CURB</span>
+          <span class="company">Curbline Properties</span>
+        </td>
+        <td>
+          <span class="location">Suite 540</span>
+          <span class="jpm-contact">JPM: Hong Zhang</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">David Lukes</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Conor Fennerty</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Stephanie Ruys de Perez</span> <span class="attendee-title">VP, Capital Markets</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Cocktails -->
+      <tr class="special-row">
+        <td><span class="time">4:00–6:00 PM</span></td>
+        <td>—</td>
+        <td colspan="2">
+          <span class="special-label">REIT Cocktails @ Ocean Prime</span>
+          <span class="special-sub">Patio outdoors</span>
+        </td>
+        <td><span class="chip-sd">SD</span></td>
+        <td></td>
+      </tr>
+
+      <!-- Net Lease Dinner -->
+      <tr class="special-row">
+        <td><span class="time">7:00 PM</span></td>
+        <td>—</td>
+        <td colspan="2">
+          <span class="special-label">NAREIT Net Lease Group Dinner</span>
+          <span class="special-sub">La Grand Boucherie</span>
+        </td>
+        <td><span class="chip-sd">SD</span></td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════ WEDNESDAY ═══════════ -->
+<div class="day-section">
+  <div class="day-header wed">
+    WEDNESDAY · JUNE 3, 2026
+    <span class="day-count">9 meetings &amp; events</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="col-time">Time</th>
+        <th class="col-broker">Broker</th>
+        <th class="col-ticker">Ticker / Company</th>
+        <th class="col-location">Location</th>
+        <th class="col-dexus">Dexus</th>
+        <th class="col-attend">Corporate Attendees</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 8:00 AM — EQIX (BMO) -->
+      <tr>
+        <td><span class="time">8:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">EQIX</span>
+          <span class="company">Equinix</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 4221</span></td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Olivier Leonetti</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Phillip Konieczny</span> <span class="attendee-title">SVP Finance</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 9:00 AM — HR (BMO) -->
+      <tr>
+        <td><span class="time">9:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">HR</span>
+          <span class="company">Healthcare Realty Trust</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 4233</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Pete Scott</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Dan Gabbay</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Rob Hull</span> <span class="attendee-title">COO</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 10:00 AM — CUZ (JPM) -->
+      <tr>
+        <td><span class="time">10:00 AM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">CUZ</span>
+          <span class="company">Cousins Properties</span>
+        </td>
+        <td>
+          <span class="location">Bellow Lobby, Concourse H</span>
+          <span class="jpm-contact">JPM: Anthony Paolone</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Colin Connolly</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Gregg Adzema</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Kennedy Hicks</span> <span class="attendee-title">CIO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Roni Imbeaux</span> <span class="attendee-title">VP, Finance &amp; IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 11:00 AM — BRX (BMO) -->
+      <tr>
+        <td><span class="time">11:00 AM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">BRX</span>
+          <span class="company">Brixmor Property Group</span>
+        </td>
+        <td><span class="location">Hilton Club · REITPac Suite</span></td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Brian Finnegan</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Steve Gallagher</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Mark Horgan</span> <span class="attendee-title">CIO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Stacy Slater</span> <span class="attendee-title">IR</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 11:00 AM — IVT (JPM) -->
+      <tr>
+        <td><span class="time">11:00 AM</span></td>
+        <td><span class="broker-jpm">JPM</span></td>
+        <td>
+          <span class="ticker jpm-ticker">IVT</span>
+          <span class="company">InvenTrust Properties</span>
+        </td>
+        <td>
+          <span class="location">ReitPac Suite</span>
+          <span class="jpm-contact">JPM: Hong Zhang</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Daniel Busch</span> <span class="attendee-title">President &amp; CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Mike Phillips</span> <span class="attendee-title">EVP &amp; CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Christy David</span> <span class="attendee-title">EVP, COO &amp; General Counsel</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Dave Heimberger</span> <span class="attendee-title">CIO</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 12:15 PM — BTIG Lunch -->
+      <tr class="special-row">
+        <td><span class="time">12:15 PM</span></td>
+        <td>—</td>
+        <td colspan="2">
+          <span class="special-label">Lunch · Dexus / BTIG</span>
+          <span class="special-sub">Location TBD &nbsp;·&nbsp; Mike Gorman (BTIG)</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td></td>
+      </tr>
+
+      <!-- 2:00 PM — IRT (BMO) -->
+      <tr>
+        <td><span class="time">2:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">IRT</span>
+          <span class="company">Independence Realty Trust</span>
+        </td>
+        <td><span class="location">Bryant · 2nd Floor</span></td>
+        <td><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Scott Schaeffer</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Jim Sebra</span> <span class="attendee-title">CFO</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 4:00 PM — OHI (BMO) -->
+      <tr>
+        <td><span class="time">4:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">OHI</span>
+          <span class="company">Omega Healthcare Investors</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 4240</span></td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Taylor Pickett</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Vikas Gupta</span> <span class="attendee-title">CIO</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- 5:00 PM — SBRA (BMO) -->
+      <tr>
+        <td><span class="time">5:00 PM</span></td>
+        <td><span class="broker-bmo">BMO</span></td>
+        <td>
+          <span class="ticker">SBRA</span>
+          <span class="company">Sabra Health Care REIT</span>
+        </td>
+        <td><span class="location">Hilton Club · Suite 511</span></td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td>
+          <div class="attendees">
+            <span class="attendee-name">Rick Matros</span> <span class="attendee-title">CEO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Michael Costa</span> <span class="attendee-title">CFO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Darrin Smith</span> <span class="attendee-title">CIO</span> &nbsp;·&nbsp;
+            <span class="attendee-name">Lukas Hartwich</span> <span class="attendee-title">EVP Finance</span>
+          </div>
+        </td>
+      </tr>
+
+      <!-- Reception -->
+      <tr class="special-row">
+        <td><span class="time">5:00–8:00 PM</span></td>
+        <td>—</td>
+        <td colspan="2">
+          <span class="special-label">BMO REITweek Reception 2026</span>
+          <span class="special-sub">Mastro's Steakhouse · 1285 6th Ave, New York, NY 10019</span>
+        </td>
+        <td><span class="chip-dk">DK</span><span class="chip-sd">SD</span></td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>Dexus Asset Management · NAREIT REITweek 2026 · Confidential</span>
+  <span>BMO Capital Markets &amp; JPMorgan · New York Hilton Midtown, 1335 Avenue of the Americas</span>
+  <span>Generated June 2026</span>
+</div>
+
+</body>
+</html>

@@ -99,14 +99,19 @@ const TUESDAY: DaySlot[] = [
   {
     kind: "meetings",
     time: "9:00 AM",
-    bmo: [bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["SD"], {
-      location: "Hilton Club · Suite 4225",
-      corpAttendees: [
-        { name: "Laura Clark", title: "CEO" },
-        { name: "Michael Fitzmaurice", title: "" },
-        { name: "Mikayla Lynch", title: "IR" },
-      ],
-    })],
+    bmo: [
+      bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["SD"], {
+        location: "Hilton Club · Suite 4225",
+        corpAttendees: [
+          { name: "Laura Clark", title: "CEO" },
+          { name: "Michael Fitzmaurice", title: "" },
+          { name: "Mikayla Lynch", title: "IR" },
+        ],
+      }),
+      bmo("bmo-cube", "CUBE", "CubeSmart", "Self Storage", "s-diversified", ["SD"], {
+        location: "Hilton Club · Clinton Suite, 2nd Floor",
+      }),
+    ],
     jpm: [],
   },
   {
@@ -140,15 +145,20 @@ const TUESDAY: DaySlot[] = [
   {
     kind: "meetings",
     time: "1:00 PM",
-    bmo: [bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["SD"], {
-      location: "Hilton Club · Suite 4329",
-      corpAttendees: [
-        { name: "Charles Young", title: "CEO" },
-        { name: "John McLaren", title: "COO" },
-        { name: "Aaron Weiss", title: "CIO" },
-        { name: "Fernando Castro-Caratini", title: "CFO" },
-      ],
-    })],
+    bmo: [
+      bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["SD"], {
+        location: "Hilton Club · Suite 4329",
+        corpAttendees: [
+          { name: "Charles Young", title: "CEO" },
+          { name: "John McLaren", title: "COO" },
+          { name: "Aaron Weiss", title: "CIO" },
+          { name: "Fernando Castro-Caratini", title: "CFO" },
+        ],
+      }),
+      bmo("bmo-trno", "TRNO", "Terreno Realty", "Industrial", "s-industrial", ["SD"], {
+        location: "Hilton Club · Networking Room",
+      }),
+    ],
     jpm: [
       jpm("jpm-cube", "CUBE", "CubeSmart", "Self Storage", "s-diversified", ["DK", "SD"], false, {
         location: "New York Hilton Midtown · FL 2, Clinton Room",
@@ -185,11 +195,16 @@ const TUESDAY: DaySlot[] = [
     })],
     jpm: [],
   },
-  // KIM (BMO) and CURB (JPM) concurrent
+  // KIM + STAG (BMO) and CURB (JPM) concurrent
   {
     kind: "meetings",
     time: "3:00 PM",
-    bmo: [bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail")],
+    bmo: [
+      bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail"),
+      bmo("bmo-stag", "STAG", "STAG Industrial", "Industrial", "s-industrial", ["SD"], {
+        location: "Hilton Club · Suite 506",
+      }),
+    ],
     jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["DK", "SD"], false, {
       location: "New York Hilton Midtown · Suite 540",
       jpmAttendee: "Hong Zhang",
