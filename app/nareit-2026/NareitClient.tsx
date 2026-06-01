@@ -200,7 +200,9 @@ const TUESDAY: DaySlot[] = [
     kind: "meetings",
     time: "3:00 PM",
     bmo: [
-      bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail"),
+      bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail", ["SD"], {
+        location: "Hilton Club · REITPac Suite",
+      }),
       bmo("bmo-stag", "STAG", "STAG Industrial", "Industrial", "s-industrial", ["DK"], {
         location: "Hilton Club · Suite 506",
       }),
