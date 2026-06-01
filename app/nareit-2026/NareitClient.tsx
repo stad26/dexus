@@ -9,6 +9,8 @@ import styles from "./page.module.css";
 type Attendee = "DK" | "SD";
 const ALL_ATTENDEES: Attendee[] = ["DK", "SD"];
 
+type CorpAttendee = { name: string; title: string };
+
 type NareitMeeting = {
   id: string; // unique key for notes/attendees (e.g. "bmo-rexr")
   company: string;
@@ -18,6 +20,9 @@ type NareitMeeting = {
   defaultAttendees: Attendee[];
   sector: string;
   sectorClass: string;
+  location?: string;
+  corpAttendees?: CorpAttendee[];
+  jpmAttendee?: string;
 };
 
 // A slot where one or more BMO + JPM meetings run concurrently
@@ -57,8 +62,9 @@ function bmo(
   sector: string,
   sectorClass: string,
   defaultAttendees: Attendee[] = [],
+  extras?: { location?: string; corpAttendees?: CorpAttendee[] },
 ): NareitMeeting {
-  return { id, ticker, company, broker: "BMO", sector, sectorClass, defaultAttendees };
+  return { id, ticker, company, broker: "BMO", sector, sectorClass, defaultAttendees, ...extras };
 }
 
 function jpm(
@@ -69,8 +75,9 @@ function jpm(
   sectorClass: string,
   defaultAttendees: Attendee[] = [],
   isVirtual = false,
+  extras?: { location?: string; corpAttendees?: CorpAttendee[]; jpmAttendee?: string },
 ): NareitMeeting {
-  return { id, ticker, company, broker: "JPM", isVirtual, sector, sectorClass, defaultAttendees };
+  return { id, ticker, company, broker: "JPM", isVirtual, sector, sectorClass, defaultAttendees, ...extras };
 }
 
 const TUESDAY: DaySlot[] = [
@@ -78,36 +85,104 @@ const TUESDAY: DaySlot[] = [
     kind: "meetings",
     time: "8:00 AM",
     bmo: [],
-    jpm: [jpm("jpm-lxp", "LXP", "LXP Industrial Trust", "Industrial", "s-industrial")],
+    jpm: [jpm("jpm-lxp", "LXP", "LXP Industrial Trust", "Industrial", "s-industrial", ["DK", "SD"], false, {
+      location: "New York Hilton Midtown · Suite 612",
+      jpmAttendee: "Anthony Paolone",
+      corpAttendees: [
+        { name: "Will Eglin", title: "Chairman & CEO" },
+        { name: "Nathan Brunner", title: "Chief Financial Officer" },
+        { name: "Brendan Mullinix", title: "EVP, Chief Investment Officer" },
+        { name: "James Dudley", title: "EVP, Director of Asset Management" },
+      ],
+    })],
   },
   {
     kind: "meetings",
     time: "9:00 AM",
-    bmo: [bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["SD"])],
+    bmo: [bmo("bmo-rexr", "REXR", "Rexford Industrial Realty", "Industrial", "s-industrial", ["SD"], {
+      location: "Hilton Club · Suite 4225",
+      corpAttendees: [
+        { name: "Laura Clark", title: "CEO" },
+        { name: "Michael Fitzmaurice", title: "" },
+        { name: "Mikayla Lynch", title: "IR" },
+      ],
+    })],
     jpm: [],
   },
   {
     kind: "meetings",
     time: "10:00 AM",
-    bmo: [bmo("bmo-esrt", "ESRT", "Empire State Realty Trust", "Office", "s-office")],
-    jpm: [jpm("jpm-cuz", "CUZ", "Cousins Properties", "Office", "s-office", ["DK"], true)],
+    bmo: [bmo("bmo-esrt", "ESRT", "Empire State Realty Trust", "Office", "s-office", ["SD"], {
+      location: "Hilton Club · Networking Room",
+    })],
+    jpm: [],
   },
   {
     kind: "meetings",
     time: "11:00 AM",
-    bmo: [bmo("bmo-egp", "EGP", "EastGroup Properties", "Industrial", "s-industrial", ["SD"])],
-    jpm: [jpm("jpm-akr", "AKR", "Acadia Realty Trust", "Retail", "s-retail", ["SD"])],
+    bmo: [bmo("bmo-egp", "EGP", "EastGroup Properties", "Industrial", "s-industrial", ["SD"], {
+      location: "Hilton Club · REITPac Suite",
+      corpAttendees: [
+        { name: "Staci Tyler", title: "CFO" },
+        { name: "Brent Wood", title: "COO" },
+        { name: "Casey Edgecombe", title: "IR" },
+      ],
+    })],
+    jpm: [jpm("jpm-akr", "AKR", "Acadia Realty Trust", "Retail", "s-retail", ["DK", "SD"], false, {
+      location: "New York Hilton Midtown · Suite 4341",
+      jpmAttendee: "Michael Mueller",
+      corpAttendees: [
+        { name: "John Gottfried", title: "CFO" },
+        { name: "John Damoulis", title: "Corporate Finance & Portfolio Analyst" },
+      ],
+    })],
   },
   {
     kind: "meetings",
     time: "1:00 PM",
-    bmo: [bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["SD"])],
-    jpm: [jpm("jpm-safe", "SAFE", "Safehold", "Net Lease", "s-net-lease", ["SD"])],
+    bmo: [bmo("bmo-sui", "SUI", "Sun Communities", "Residential", "s-residential", ["SD"], {
+      location: "Hilton Club · Suite 4329",
+      corpAttendees: [
+        { name: "Charles Young", title: "CEO" },
+        { name: "John McLaren", title: "COO" },
+        { name: "Aaron Weiss", title: "CIO" },
+        { name: "Fernando Castro-Caratini", title: "CFO" },
+      ],
+    })],
+    jpm: [
+      jpm("jpm-cube", "CUBE", "CubeSmart", "Self Storage", "s-diversified", ["DK", "SD"], false, {
+        location: "New York Hilton Midtown · FL 2, Clinton Room",
+        jpmAttendee: "Michael Mueller",
+        corpAttendees: [
+          { name: "Chris Marr", title: "CEO" },
+          { name: "Tim Martin", title: "CFO" },
+          { name: "Josh Schutzer", title: "VP Finance" },
+          { name: "Brett Hoffman", title: "SVP Store Operations" },
+        ],
+      }),
+      jpm("jpm-safe", "SAFE", "Safehold", "Net Lease", "s-net-lease", ["DK", "SD"], false, {
+        location: "New York Hilton Midtown · Suite 521",
+        jpmAttendee: "Anthony Paolone",
+        corpAttendees: [
+          { name: "Jay Sugarman", title: "Chairman & CEO" },
+          { name: "Michael Trachtenberg", title: "President" },
+          { name: "Brett Asnas", title: "CFO" },
+          { name: "Pearse Hoffman", title: "SVP, Capital Markets & IR" },
+        ],
+      }),
+    ],
   },
   {
     kind: "meetings",
     time: "2:00 PM",
-    bmo: [bmo("bmo-frt", "FRT", "Federal Realty Investment Trust", "Retail", "s-retail", ["SD"])],
+    bmo: [bmo("bmo-frt", "FRT", "Federal Realty Investment Trust", "Retail", "s-retail", ["DK", "SD"], {
+      location: "Hilton Club · REITPac Suite",
+      corpAttendees: [
+        { name: "Don Wood", title: "CEO" },
+        { name: "Dan Guglielmone", title: "CFO" },
+        { name: "Jill Sawyer", title: "IR" },
+      ],
+    })],
     jpm: [],
   },
   // KIM (BMO) and CURB (JPM) concurrent
@@ -115,12 +190,20 @@ const TUESDAY: DaySlot[] = [
     kind: "meetings",
     time: "3:00 PM",
     bmo: [bmo("bmo-kim", "KIM", "Kimco Realty", "Retail", "s-retail")],
-    jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["SD"])],
+    jpm: [jpm("jpm-curb", "CURB", "Curbline Properties", "Retail", "s-retail", ["DK", "SD"], false, {
+      location: "New York Hilton Midtown · Suite 540",
+      jpmAttendee: "Hong Zhang",
+      corpAttendees: [
+        { name: "David Lukes", title: "CEO" },
+        { name: "Conor Fennerty", title: "CFO" },
+        { name: "Stephanie Ruys de Perez", title: "VP, Capital Markets" },
+      ],
+    })],
   },
   {
     kind: "special",
     time: "4:00–6:00 PM",
-    label: "REIT Cocktails @ Ocean Prime (patio outdoors)",
+    label: "REIT Cocktails @ Ocean Prime (patio outdoors) · SD",
     subtitle: "Ocean Prime · Swing by when you can!",
     color: "#e8f4f0",
     attendees: [
@@ -219,56 +302,129 @@ const TUESDAY: DaySlot[] = [
       },
     ],
   },
+  {
+    kind: "special",
+    time: "7:00 PM",
+    label: "NAREIT Net Lease Group Dinner · SD",
+    subtitle: "La Grand Boucherie",
+    color: "#fdf3e3",
+  },
 ];
 
 const WEDNESDAY: DaySlot[] = [
   {
     kind: "meetings",
     time: "8:00 AM",
-    bmo: [bmo("bmo-eqix", "EQIX", "Equinix", "Data Center", "s-data-center")],
+    bmo: [bmo("bmo-eqix", "EQIX", "Equinix", "Data Center", "s-data-center", ["DK", "SD"], {
+      location: "Hilton Club · Suite 4221",
+      corpAttendees: [
+        { name: "Olivier Leonetti", title: "CFO" },
+        { name: "Phillip Konieczny", title: "SVP Finance" },
+      ],
+    })],
     jpm: [],
   },
   {
     kind: "meetings",
     time: "9:00 AM",
-    bmo: [bmo("bmo-hr", "HR", "Healthcare Realty Trust", "Healthcare", "s-healthcare")],
+    bmo: [bmo("bmo-hr", "HR", "Healthcare Realty Trust", "Healthcare", "s-healthcare", ["SD"], {
+      location: "Hilton Club · Suite 4233",
+      corpAttendees: [
+        { name: "Pete Scott", title: "CEO" },
+        { name: "Dan Gabbay", title: "CFO" },
+        { name: "Rob Hull", title: "COO" },
+      ],
+    })],
     jpm: [],
+  },
+  {
+    kind: "meetings",
+    time: "10:00 AM",
+    bmo: [],
+    jpm: [jpm("jpm-cuz", "CUZ", "Cousins Properties", "Office", "s-office", ["DK", "SD"], false, {
+      location: "New York Hilton Midtown · Bellow Lobby, Concourse H",
+      jpmAttendee: "Anthony Paolone",
+      corpAttendees: [
+        { name: "Colin Connolly", title: "CEO" },
+        { name: "Gregg Adzema", title: "CFO" },
+        { name: "Kennedy Hicks", title: "Chief Investment Officer" },
+        { name: "Roni Imbeaux", title: "VP, Finance & IR" },
+      ],
+    })],
   },
   // BRX (BMO) and IVT (JPM) concurrent at 11 AM
   {
     kind: "meetings",
     time: "11:00 AM",
-    bmo: [bmo("bmo-brx", "BRX", "Brixmor Property Group", "Retail", "s-retail")],
-    jpm: [jpm("jpm-ivt", "IVT", "InvenTrust Properties", "Retail", "s-retail", ["DK"], true)],
+    bmo: [bmo("bmo-brx", "BRX", "Brixmor Property Group", "Retail", "s-retail", ["DK", "SD"], {
+      location: "Hilton Club · REITPac Suite",
+      corpAttendees: [
+        { name: "Brian Finnegan", title: "CEO" },
+        { name: "Steve Gallagher", title: "CFO" },
+        { name: "Mark Horgan", title: "CIO" },
+        { name: "Stacy Slater", title: "IR" },
+      ],
+    })],
+    jpm: [jpm("jpm-ivt", "IVT", "InvenTrust Properties", "Retail", "s-retail", ["DK", "SD"], false, {
+      location: "New York Hilton Midtown · ReitPac Suite",
+      jpmAttendee: "Hong Zhang",
+      corpAttendees: [
+        { name: "Daniel Busch", title: "President & CEO" },
+        { name: "Mike Phillips", title: "EVP, CFO & Treasurer" },
+        { name: "Christy David", title: "EVP, Chief Operating Officer & General Counsel" },
+        { name: "Dave Heimberger", title: "Chief Information Officer" },
+      ],
+    })],
   },
   {
-    kind: "meetings",
-    time: "1:00 PM",
-    bmo: [],
-    jpm: [jpm("jpm-tbc", "TBC", "To Be Confirmed", "Diversified", "s-diversified")],
+    kind: "special",
+    time: "12:15 PM",
+    label: "Lunch · Dexus / BTIG · Mike Gorman",
+    subtitle: "Location TBD",
+    color: "#f5f0e8",
   },
   {
     kind: "meetings",
     time: "2:00 PM",
-    bmo: [bmo("bmo-irt", "IRT", "Independence Realty Trust", "Residential", "s-residential")],
+    bmo: [bmo("bmo-irt", "IRT", "Independence Realty Trust", "Residential", "s-residential", ["SD"], {
+      location: "Bryant · 2nd Floor",
+      corpAttendees: [
+        { name: "Scott Schaeffer", title: "CEO" },
+        { name: "Jim Sebra", title: "CFO" },
+      ],
+    })],
     jpm: [],
   },
   {
     kind: "meetings",
     time: "4:00 PM",
-    bmo: [bmo("bmo-ohi", "OHI", "Omega Healthcare Investors", "Healthcare", "s-healthcare")],
+    bmo: [bmo("bmo-ohi", "OHI", "Omega Healthcare Investors", "Healthcare", "s-healthcare", ["DK", "SD"], {
+      location: "Hilton Club · Suite 4240",
+      corpAttendees: [
+        { name: "Taylor Pickett", title: "CEO" },
+        { name: "Vikas Gupta", title: "CIO" },
+      ],
+    })],
     jpm: [],
   },
   // SBRA meeting concurrent with reception start
   {
     kind: "meetings",
     time: "5:00 PM",
-    bmo: [bmo("bmo-sbra", "SBRA", "Sabra Health Care REIT", "Healthcare", "s-healthcare")],
+    bmo: [bmo("bmo-sbra", "SBRA", "Sabra Health Care REIT", "Healthcare", "s-healthcare", ["DK", "SD"], {
+      location: "Hilton Club · Suite 511",
+      corpAttendees: [
+        { name: "Rick Matros", title: "CEO" },
+        { name: "Michael Costa", title: "CFO" },
+        { name: "Darrin Smith", title: "CIO" },
+        { name: "Lukas Hartwich", title: "EVP Finance" },
+      ],
+    })],
     jpm: [],
   },
   {
     kind: "special",
-    time: "5:00 PM",
+    time: "5:00–8:00 PM",
     label: "BMO REITweek Reception 2026",
     subtitle: "Mastro's Steakhouse · 1285 6th Ave, New York, NY 10019",
     color: "#f0e8f5",
@@ -363,6 +519,27 @@ function MeetingCard({
       </div>
       <div className={styles.cardCompany}>{meeting.company}</div>
       <span className={`sector-tag ${meeting.sectorClass}`}>{meeting.sector}</span>
+      {meeting.location && (
+        <div className={styles.meetingLocation}>{meeting.location}</div>
+      )}
+      {meeting.jpmAttendee && (
+        <div className={styles.meetingJpmContact}>JPM: {meeting.jpmAttendee}</div>
+      )}
+      {meeting.corpAttendees && meeting.corpAttendees.length > 0 && (
+        <details className={styles.corpAttendeesDetails}>
+          <summary className={styles.corpAttendeesSummary}>
+            {meeting.corpAttendees.length} attendee{meeting.corpAttendees.length !== 1 ? "s" : ""}
+          </summary>
+          <div className={styles.corpAttendeeList}>
+            {meeting.corpAttendees.map((a) => (
+              <div key={a.name} className={styles.corpAttendeeItem}>
+                <span className={styles.corpAttendeeName}>{a.name}</span>
+                <span className={styles.corpAttendeeTitle}>{a.title}</span>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
       <textarea
         className={styles.notesArea}
         value={noteValue}

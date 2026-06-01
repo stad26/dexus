@@ -234,6 +234,63 @@
   line-height: 1.3;
 }
 
+/* ── Meeting detail (location, JPM contact, corp attendees) ── */
+
+.meetingLocation {
+  font-size: 8.5px;
+  color: var(--ink-light);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.meetingJpmContact {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8px;
+  color: #7a1c3a;
+  margin-top: 1px;
+}
+
+.corpAttendeesDetails {
+  margin-top: 4px;
+}
+
+.corpAttendeesSummary {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8px;
+  color: var(--ink-light);
+  cursor: pointer;
+  user-select: none;
+}
+
+.corpAttendeesSummary:hover {
+  color: var(--ink);
+}
+
+.corpAttendeeList {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.corpAttendeeItem {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 4px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.corpAttendeeName {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.corpAttendeeTitle {
+  font-size: 8px;
+  color: var(--ink-light);
+}
+
 /* ── Notes area ────────────────────────────────────────────── */
 
 .notesArea {
