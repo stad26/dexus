@@ -380,16 +380,6 @@
     "notes": "After close"
   },
   {
-    "ticker": "ROIC",
-    "name": "Retail Opportunity",
-    "sector": "retail",
-    "releaseDate": "Jul 29, 2026",
-    "callDate": "Jul 30, 2026, TBD",
-    "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": "After close"
-  },
-  {
     "ticker": "SITC",
     "name": "SITE Centers Corp.",
     "sector": "retail",
@@ -495,16 +485,6 @@
     "sector": "healthcare",
     "releaseDate": "Aug 7, 2026",
     "callDate": "Aug 7, 2026, TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": "After close"
-  },
-  {
-    "ticker": "GMRE",
-    "name": "Global Medical REIT",
-    "sector": "healthcare",
-    "releaseDate": "Aug 8, 2026",
-    "callDate": "Aug 8, 2026, TBD",
     "exchange": "NYSE",
     "status": "EST",
     "notes": "After close"
@@ -1410,16 +1390,6 @@
     "notes": ""
   },
   {
-    "ticker": "AIRC",
-    "name": "Apartment Income REIT Corp",
-    "sector": "residential",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "CLPR",
     "name": "Clipper Realty",
     "sector": "residential",
@@ -1427,26 +1397,6 @@
     "callDate": "Aug 6, 2026, 4p ET",
     "exchange": "NYSE",
     "status": "CONF",
-    "notes": ""
-  },
-  {
-    "ticker": "BRG",
-    "name": "Bluerock Residential Growth REIT",
-    "sector": "residential",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "APTS",
-    "name": "Preferred Apartment Communities",
-    "sector": "residential",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
     "notes": ""
   },
   {
@@ -1480,16 +1430,6 @@
     "notes": ""
   },
   {
-    "ticker": "ACC",
-    "name": "American Campus Communities",
-    "sector": "residential",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "RPT",
     "name": "RPT Realty",
     "sector": "retail",
@@ -1507,16 +1447,6 @@
     "callDate": "Jul 28, 2026, 8a ET",
     "exchange": "NYSE",
     "status": "CONF",
-    "notes": ""
-  },
-  {
-    "ticker": "CDR",
-    "name": "Cedar Realty Trust",
-    "sector": "retail",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
     "notes": ""
   },
   {
@@ -1550,32 +1480,12 @@
     "notes": ""
   },
   {
-    "ticker": "UBA",
-    "name": "Urstadt Biddle Properties",
-    "sector": "retail",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "WHLR",
     "name": "Wheeler REIT",
     "sector": "retail",
     "releaseDate": "TBD",
     "callDate": "TBD",
     "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "WSR",
-    "name": "Whitestone REIT",
-    "sector": "retail",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
     "status": "EST",
     "notes": ""
   },
@@ -1620,26 +1530,6 @@
     "notes": ""
   },
   {
-    "ticker": "SRC",
-    "name": "Spirit Realty Capital",
-    "sector": "net-lease",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "STOR",
-    "name": "Store Capital",
-    "sector": "net-lease",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "GNL",
     "name": "Global Net Lease",
     "sector": "net-lease",
@@ -1670,16 +1560,6 @@
     "notes": ""
   },
   {
-    "ticker": "MGP",
-    "name": "MGM Growth Properties",
-    "sector": "casino",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "MDV",
     "name": "Modiv Industrial",
     "sector": "net-lease",
@@ -1706,16 +1586,6 @@
     "releaseDate": "TBD",
     "callDate": "TBD",
     "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "HTA",
-    "name": "Healthcare Trust of America",
-    "sector": "healthcare",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
     "status": "EST",
     "notes": ""
   },
@@ -1790,46 +1660,6 @@
     "notes": ""
   },
   {
-    "ticker": "DRE",
-    "name": "Duke Realty",
-    "sector": "industrial",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "PLYM",
-    "name": "Plymouth Industrial REIT",
-    "sector": "industrial",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "INDT",
-    "name": "Indus Realty Trust",
-    "sector": "industrial",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
-    "ticker": "PSB",
-    "name": "PS Business Parks",
-    "sector": "industrial",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "NXDT",
     "name": "NexPoint Diversified Real Estate Trust",
     "sector": "specialty",
@@ -1847,16 +1677,6 @@
     "callDate": "Aug 5, 2026, 4p ET",
     "exchange": "NASDAQ",
     "status": "CONF",
-    "notes": ""
-  },
-  {
-    "ticker": "LSI",
-    "name": "Life Storage",
-    "sector": "self-storage",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
     "notes": ""
   },
   {
@@ -1980,16 +1800,6 @@
     "notes": ""
   },
   {
-    "ticker": "HT",
-    "name": "Hersha Hospitality Trust",
-    "sector": "hotel",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "SVC",
     "name": "Service Properties Trust",
     "sector": "hotel",
@@ -2050,16 +1860,6 @@
     "notes": ""
   },
   {
-    "ticker": "CONE",
-    "name": "CyrusOne",
-    "sector": "data-center",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "DBRG",
     "name": "DigitalBridge Group",
     "sector": "data-center",
@@ -2097,16 +1897,6 @@
     "callDate": "Aug 4, 2026, 8:30a ET",
     "exchange": "NYSE",
     "status": "CONF",
-    "notes": ""
-  },
-  {
-    "ticker": "BRMK",
-    "name": "Broadmark Realty Capital",
-    "sector": "mortgage",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NYSE",
-    "status": "EST",
     "notes": ""
   },
   {
@@ -2148,5 +1938,95 @@
     "exchange": "NYSE",
     "status": "CONF",
     "notes": ""
+  },
+  {
+    "ticker": "PMZ.UN",
+    "name": "Primaris REIT",
+    "sector": "canadian",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "NXR.UN",
+    "name": "Nexus Industrial REIT",
+    "sector": "canadian",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "CSH.UN",
+    "name": "Chartwell Retirement Residences",
+    "sector": "canadian",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "SIA",
+    "name": "Sienna Senior Living",
+    "sector": "canadian",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 5, 2026, 4:00p ET",
+    "exchange": "TSX",
+    "status": "CONF",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "GO",
+    "name": "Go Residential REIT",
+    "sector": "canadian",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "JAN",
+    "name": "Janus Living, Inc.",
+    "sector": "residential",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 5, 2026, 4:00p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NHP",
+    "name": "National Healthcare Properties, Inc.",
+    "sector": "healthcare",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 6, 2026, 4:00p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DXDC",
+    "name": "DXDC",
+    "sector": "specialty",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": null
+  },
+  {
+    "ticker": "CSQR",
+    "name": "Csquare, Inc.",
+    "sector": "specialty",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4:00p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
   }
 ]
