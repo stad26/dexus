@@ -1,0 +1,2152 @@
+[
+  {
+    "ticker": "SLG",
+    "name": "SL Green Realty Corp.",
+    "sector": "office",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 2p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PLD",
+    "name": "Prologis, Inc.",
+    "sector": "industrial",
+    "releaseDate": "Jul 16, 2026",
+    "callDate": "Jul 16, 2026, 12:00p",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "AMT",
+    "name": "American Tower Corp.",
+    "sector": "tower",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "WELL",
+    "name": "Welltower Inc.",
+    "sector": "healthcare",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 29, 2026, 9:00a",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PSA",
+    "name": "Public Storage",
+    "sector": "self-storage",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "AVB",
+    "name": "AvalonBay Communities",
+    "sector": "residential",
+    "releaseDate": "Jul 27, 2026",
+    "callDate": "Jul 28, 2026, 1:00p",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ESS",
+    "name": "Essex Property Trust",
+    "sector": "residential",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 2p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EQR",
+    "name": "Equity Residential",
+    "sector": "residential",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 29, 2026, 10:00a CT",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EQIX",
+    "name": "Equinix, Inc.",
+    "sector": "data-center",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 5:30p",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "BNL",
+    "name": "Broadstone Net Lease",
+    "sector": "net-lease",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "MAA",
+    "name": "Mid-America Apartment",
+    "sector": "residential",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "IRT",
+    "name": "Independence Realty Trust",
+    "sector": "residential",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "IRM",
+    "name": "Iron Mountain Inc.",
+    "sector": "specialty",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "NNN",
+    "name": "NNN REIT, Inc.",
+    "sector": "net-lease",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "KIM",
+    "name": "Kimco Realty Corp.",
+    "sector": "retail",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "UDR",
+    "name": "UDR, Inc.",
+    "sector": "residential",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "O",
+    "name": "Realty Income Corp.",
+    "sector": "net-lease",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "FVR",
+    "name": "FrontView REIT",
+    "sector": "net-lease",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 7, 2026, 10:00a CT",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ONL",
+    "name": "Orion Properties Inc.",
+    "sector": "net-lease",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "HR.UN",
+    "name": "H&R REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "Aug 15, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "VTR",
+    "name": "Ventas, Inc.",
+    "sector": "healthcare",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CCI",
+    "name": "Crown Castle Inc.",
+    "sector": "tower",
+    "releaseDate": "Jul 22, 2026",
+    "callDate": "Jul 22, 2026, 5p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "BXP",
+    "name": "BXP, Inc.",
+    "sector": "office",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "VNO",
+    "name": "Vornado Realty Trust",
+    "sector": "office",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SPG",
+    "name": "Simon Property Group",
+    "sector": "retail",
+    "releaseDate": "Aug 10, 2026",
+    "callDate": "Aug 10, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "REG",
+    "name": "Regency Centers Corp.",
+    "sector": "retail",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "EXR",
+    "name": "Extra Space Storage",
+    "sector": "self-storage",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 1p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CUBE",
+    "name": "CubeSmart",
+    "sector": "self-storage",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "HST",
+    "name": "Host Hotels & Resorts",
+    "sector": "hotel",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "HIW",
+    "name": "Highwoods Properties",
+    "sector": "office",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 29, 2026, 11:00a",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SBAC",
+    "name": "SBA Communications",
+    "sector": "tower",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "WPC",
+    "name": "W. P. Carey Inc.",
+    "sector": "net-lease",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ADC",
+    "name": "Agree Realty Corp.",
+    "sector": "net-lease",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "FRT",
+    "name": "Federal Realty Investment",
+    "sector": "retail",
+    "releaseDate": "Jul 31, 2026",
+    "callDate": "Jul 31, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SKT",
+    "name": "Tanger Inc.",
+    "sector": "retail",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "MAC",
+    "name": "Macerich Co.",
+    "sector": "retail",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "BRX",
+    "name": "Brixmor Property Group",
+    "sector": "retail",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 29, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "KRG",
+    "name": "Kite Realty Group",
+    "sector": "retail",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ROIC",
+    "name": "Retail Opportunity",
+    "sector": "retail",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 30, 2026, TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SITC",
+    "name": "SITE Centers Corp.",
+    "sector": "retail",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "AHR",
+    "name": "American Healthcare REIT",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CTRE",
+    "name": "CareTrust REIT",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "HR",
+    "name": "Healthcare Realty Trust",
+    "sector": "healthcare",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "MPW",
+    "name": "Medical Properties Trust",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DOC",
+    "name": "Healthpeak Properties",
+    "sector": "healthcare",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "OHI",
+    "name": "Omega Healthcare Investors",
+    "sector": "healthcare",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "LTC",
+    "name": "LTC Properties",
+    "sector": "healthcare",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SBRA",
+    "name": "Sabra Health Care REIT",
+    "sector": "healthcare",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NHI",
+    "name": "National Health Investors",
+    "sector": "healthcare",
+    "releaseDate": "Aug 10, 2026",
+    "callDate": "Aug 10, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "UHT",
+    "name": "Universal Health Realty",
+    "sector": "healthcare",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GMRE",
+    "name": "Global Medical REIT",
+    "sector": "healthcare",
+    "releaseDate": "Aug 8, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DHC",
+    "name": "Diversified Healthcare Trust",
+    "sector": "healthcare",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NHC",
+    "name": "National Healthcare Corp",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DLR",
+    "name": "Digital Realty Trust",
+    "sector": "data-center",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 5p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "STAG",
+    "name": "STAG Industrial",
+    "sector": "industrial",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "FR",
+    "name": "First Industrial Realty",
+    "sector": "industrial",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EGP",
+    "name": "Eastgroup Properties",
+    "sector": "industrial",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 10a ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "REXR",
+    "name": "Rexford Industrial",
+    "sector": "industrial",
+    "releaseDate": "Jul 24, 2026",
+    "callDate": "Jul 24, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "LXP",
+    "name": "LXP Industrial Trust",
+    "sector": "industrial",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "COLD",
+    "name": "Americold Realty Trust",
+    "sector": "industrial",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "TRNO",
+    "name": "Terreno Realty Corp.",
+    "sector": "industrial",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ILPT",
+    "name": "Industrial Logistics Prop.",
+    "sector": "industrial",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EPRT",
+    "name": "Essential Properties Realty",
+    "sector": "net-lease",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NTST",
+    "name": "NETSTREIT Corp.",
+    "sector": "net-lease",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PINE",
+    "name": "Alpine Income Property",
+    "sector": "net-lease",
+    "releaseDate": "Jul 24, 2026",
+    "callDate": "Jul 24, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "FCPT",
+    "name": "Four Corners Property",
+    "sector": "net-lease",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GTY",
+    "name": "Getty Realty Corp.",
+    "sector": "net-lease",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CTO",
+    "name": "CTO Realty Growth",
+    "sector": "net-lease",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GOOD",
+    "name": "Gladstone Commercial",
+    "sector": "net-lease",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "VICI",
+    "name": "VICI Properties Inc.",
+    "sector": "casino",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GLPI",
+    "name": "Gaming & Leisure Properties",
+    "sector": "casino",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "AMH",
+    "name": "American Homes 4 Rent",
+    "sector": "residential",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "INVH",
+    "name": "Invitation Homes",
+    "sector": "residential",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SUI",
+    "name": "Sun Communities",
+    "sector": "residential",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ELS",
+    "name": "Equity LifeStyle Properties",
+    "sector": "residential",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CPT",
+    "name": "Camden Property Trust",
+    "sector": "residential",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Aug 1, 2026, 10:00a CT",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "VRE",
+    "name": "Veris Residential",
+    "sector": "residential",
+    "releaseDate": "N/A",
+    "callDate": "N/A",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "Being acquired — not reporting"
+  },
+  {
+    "ticker": "AIV",
+    "name": "Aimco",
+    "sector": "residential",
+    "releaseDate": "Aug 10, 2026",
+    "callDate": "Aug 10, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ELME",
+    "name": "Elme Communities",
+    "sector": "residential",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "UMH",
+    "name": "UMH Properties",
+    "sector": "residential",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CUZ",
+    "name": "Cousins Properties",
+    "sector": "office",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DEA",
+    "name": "Easterly Govt Properties",
+    "sector": "office",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PGRE",
+    "name": "Paramount Group",
+    "sector": "office",
+    "releaseDate": "Jul 24, 2026",
+    "callDate": "Jul 24, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EQ",
+    "name": "Equity Commonwealth",
+    "sector": "office",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ARE",
+    "name": "Alexandria Real Estate",
+    "sector": "office",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 2p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "KRC",
+    "name": "Kilroy Realty Corp.",
+    "sector": "office",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 1p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CIO",
+    "name": "City Office REIT",
+    "sector": "office",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PDM",
+    "name": "Piedmont Office Realty",
+    "sector": "office",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DEI",
+    "name": "Douglas Emmett",
+    "sector": "office",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "JBGS",
+    "name": "JBG SMITH Properties",
+    "sector": "office",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PKST",
+    "name": "Peakstone Realty Trust",
+    "sector": "office",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PK",
+    "name": "Park Hotels & Resorts",
+    "sector": "hotel",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "RHP",
+    "name": "Ryman Hospitality Prop.",
+    "sector": "hotel",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "APLE",
+    "name": "Apple Hospitality REIT",
+    "sector": "hotel",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "SHO",
+    "name": "Sunstone Hotel Investors",
+    "sector": "hotel",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "DRH",
+    "name": "DiamondRock Hospitality",
+    "sector": "hotel",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Aug 1, 2026, 9:00a",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "XHR",
+    "name": "Xenia Hotels & Resorts",
+    "sector": "hotel",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 1p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CLDT",
+    "name": "Chatham Lodging Trust",
+    "sector": "hotel",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "PEB",
+    "name": "Pebblebrook Hotel Trust",
+    "sector": "hotel",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "RLJ",
+    "name": "RLJ Lodging Trust",
+    "sector": "hotel",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "INN",
+    "name": "Summit Hotel Properties",
+    "sector": "hotel",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "STWD",
+    "name": "Starwood Property Trust",
+    "sector": "mortgage",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "BXMT",
+    "name": "Blackstone Mortgage Trust",
+    "sector": "mortgage",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "RC",
+    "name": "Ready Capital Corp.",
+    "sector": "mortgage",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "KREF",
+    "name": "KKR Real Estate Finance",
+    "sector": "mortgage",
+    "releaseDate": "Jul 22, 2026",
+    "callDate": "Jul 22, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "TRTX",
+    "name": "TPG RE Finance Trust",
+    "sector": "mortgage",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GPMT",
+    "name": "Granite Point Mortgage",
+    "sector": "mortgage",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "LADR",
+    "name": "Ladder Capital Corp.",
+    "sector": "mortgage",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "BRSP",
+    "name": "BrightSpire Capital",
+    "sector": "mortgage",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "ARI",
+    "name": "Apollo Real Estate Finance",
+    "sector": "mortgage",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NYMT",
+    "name": "New York Mortgage Trust",
+    "sector": "mortgage",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NREF",
+    "name": "NexPoint Real Estate Finance",
+    "sector": "mortgage",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "EPR",
+    "name": "EPR Properties",
+    "sector": "specialty",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "OUT",
+    "name": "Outfront Media",
+    "sector": "specialty",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "LAMR",
+    "name": "Lamar Advertising Co.",
+    "sector": "specialty",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "UNIT",
+    "name": "Uniti Group",
+    "sector": "specialty",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 8:30a ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "IIPR",
+    "name": "Innovative Industrial Prop.",
+    "sector": "specialty",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "GEO",
+    "name": "GEO Group",
+    "sector": "specialty",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "CXW",
+    "name": "CoreCivic Inc.",
+    "sector": "specialty",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "WY",
+    "name": "Weyerhaeuser Co.",
+    "sector": "timber",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "PCH",
+    "name": "PotlatchDeltic Corp.",
+    "sector": "timber",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": "After close"
+  },
+  {
+    "ticker": "RYN",
+    "name": "Rayonier Inc.",
+    "sector": "timber",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "LAND",
+    "name": "Gladstone Land Corp.",
+    "sector": "timber",
+    "releaseDate": "Aug 11, 2026",
+    "callDate": "Aug 11, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "REI.UN",
+    "name": "RioCan REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "CHP.UN",
+    "name": "Choice Properties REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "SRU.UN",
+    "name": "SmartCentres REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "AP.UN",
+    "name": "Allied Properties REIT",
+    "sector": "canadian",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "D.UN",
+    "name": "Dream Office REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "MI.UN",
+    "name": "Minto Apartment REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "BEI.UN",
+    "name": "Boardwalk REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 8, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "CAR.UN",
+    "name": "Canadian Apartment REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 8, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "GRT.UN",
+    "name": "Granite REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 8, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "NWH.UN",
+    "name": "Northwest Healthcare",
+    "sector": "canadian",
+    "releaseDate": "Aug 8, 2026",
+    "callDate": "Aug 8, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "MRT.UN",
+    "name": "Morguard REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "Aug 14, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "AX.UN",
+    "name": "Artis REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "Aug 14, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "CRT.UN",
+    "name": "CT REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "FCR.UN",
+    "name": "First Capital REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 7, 2026",
+    "callDate": "Aug 7, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "INO.UN",
+    "name": "Inovalis REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "Aug 14, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "ERE.UN",
+    "name": "European Commercial REIT",
+    "sector": "canadian",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "Aug 14, 2026, TBD",
+    "exchange": "TSX",
+    "status": "EST",
+    "notes": "CAD reporting"
+  },
+  {
+    "ticker": "CSR",
+    "name": "Centerspace",
+    "sector": "residential",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "NXRT",
+    "name": "NexPoint Residential Trust",
+    "sector": "residential",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "AIRC",
+    "name": "Apartment Income REIT Corp",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "CLPR",
+    "name": "Clipper Realty",
+    "sector": "residential",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "BRG",
+    "name": "Bluerock Residential Growth REIT",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "APTS",
+    "name": "Preferred Apartment Communities",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "BRT",
+    "name": "BRT Realty Trust",
+    "sector": "residential",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "BHM",
+    "name": "Bluerock Homes Trust",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "RESI",
+    "name": "Altisource Residential Corp",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "ACC",
+    "name": "American Campus Communities",
+    "sector": "residential",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "RPT",
+    "name": "RPT Realty",
+    "sector": "retail",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 5p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "CURB",
+    "name": "Curbline Properties",
+    "sector": "retail",
+    "releaseDate": "Jul 28, 2026",
+    "callDate": "Jul 28, 2026, 8a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "CDR",
+    "name": "Cedar Realty Trust",
+    "sector": "retail",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "BFS",
+    "name": "Saul Centers",
+    "sector": "retail",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "AKR",
+    "name": "Acadia Realty Trust",
+    "sector": "retail",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "UE",
+    "name": "Urban Edge Properties",
+    "sector": "retail",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "UBA",
+    "name": "Urstadt Biddle Properties",
+    "sector": "retail",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "WHLR",
+    "name": "Wheeler REIT",
+    "sector": "retail",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "WSR",
+    "name": "Whitestone REIT",
+    "sector": "retail",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "IVT",
+    "name": "InvenTrust Properties",
+    "sector": "retail",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 10a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "PECO",
+    "name": "Phillips Edison & Company",
+    "sector": "retail",
+    "releaseDate": "Jul 24, 2026",
+    "callDate": "Jul 24, 2026, 12p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "ALEX",
+    "name": "Alexander & Baldwin",
+    "sector": "retail",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "CBL",
+    "name": "CBL & Associates Properties",
+    "sector": "retail",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "SRC",
+    "name": "Spirit Realty Capital",
+    "sector": "net-lease",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "STOR",
+    "name": "Store Capital",
+    "sector": "net-lease",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "GNL",
+    "name": "Global Net Lease",
+    "sector": "net-lease",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "RTL",
+    "name": "Necessity Retail REIT",
+    "sector": "net-lease",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "PSTL",
+    "name": "Postal Realty Trust",
+    "sector": "net-lease",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "MGP",
+    "name": "MGM Growth Properties",
+    "sector": "casino",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "MDV",
+    "name": "Modiv Industrial",
+    "sector": "net-lease",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "MRP",
+    "name": "MRP Industrial",
+    "sector": "net-lease",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "GIPR",
+    "name": "Generation Income Properties",
+    "sector": "net-lease",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "HTA",
+    "name": "Healthcare Trust of America",
+    "sector": "healthcare",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "CHCT",
+    "name": "Community Healthcare Trust",
+    "sector": "healthcare",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "SNDA",
+    "name": "Sonida Senior Living",
+    "sector": "healthcare",
+    "releaseDate": "Aug 10, 2026",
+    "callDate": "Aug 10, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "SILA",
+    "name": "Sila Realty Trust",
+    "sector": "healthcare",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "ENSG",
+    "name": "Ensign Group",
+    "sector": "healthcare",
+    "releaseDate": "Jul 27, 2026",
+    "callDate": "Jul 27, 2026, 8:30a ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "BKD",
+    "name": "Brookdale Senior Living",
+    "sector": "healthcare",
+    "releaseDate": "Aug 10, 2026",
+    "callDate": "Aug 10, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "STRW",
+    "name": "Strawberry Fields REIT",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "MNR",
+    "name": "Monmouth Real Estate",
+    "sector": "industrial",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "DRE",
+    "name": "Duke Realty",
+    "sector": "industrial",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "PLYM",
+    "name": "Plymouth Industrial REIT",
+    "sector": "industrial",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "INDT",
+    "name": "Indus Realty Trust",
+    "sector": "industrial",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "PSB",
+    "name": "PS Business Parks",
+    "sector": "industrial",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "NXDT",
+    "name": "NexPoint Diversified Real Estate Trust",
+    "sector": "specialty",
+    "releaseDate": "Aug 13, 2026",
+    "callDate": "Aug 13, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "LINE",
+    "name": "Lineage, Inc.",
+    "sector": "industrial",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "LSI",
+    "name": "Life Storage",
+    "sector": "self-storage",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "NSA",
+    "name": "National Storage Affiliates",
+    "sector": "self-storage",
+    "releaseDate": "Aug 3, 2026",
+    "callDate": "Aug 3, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "SELF",
+    "name": "Global Self Storage",
+    "sector": "self-storage",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "WSC",
+    "name": "WillScot Holdings",
+    "sector": "specialty",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "AAT",
+    "name": "American Assets Trust",
+    "sector": "office",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 11a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "BDN",
+    "name": "Brandywine Realty Trust",
+    "sector": "office",
+    "releaseDate": "Jul 23, 2026",
+    "callDate": "Jul 23, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "KW",
+    "name": "Kennedy-Wilson Holdings",
+    "sector": "office",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "ESRT",
+    "name": "Empire State Realty Trust",
+    "sector": "office",
+    "releaseDate": "Jul 29, 2026",
+    "callDate": "Jul 29, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "SQFT",
+    "name": "Presidio Property Trust",
+    "sector": "office",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "MDRR",
+    "name": "Medalist Diversified REIT",
+    "sector": "office",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "CMCT",
+    "name": "Creative Media & Community Trust",
+    "sector": "office",
+    "releaseDate": "Aug 12, 2026",
+    "callDate": "Aug 12, 2026, 8:30a ET",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "HPP",
+    "name": "Hudson Pacific Properties",
+    "sector": "office",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 12p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "AHH",
+    "name": "Armada Hoffler Properties",
+    "sector": "office",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "HT",
+    "name": "Hersha Hospitality Trust",
+    "sector": "hotel",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "SVC",
+    "name": "Service Properties Trust",
+    "sector": "hotel",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "CDOR",
+    "name": "Condor Hospitality Trust",
+    "sector": "hotel",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "BHR",
+    "name": "Braemar Hotels & Resorts",
+    "sector": "hotel",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "CORR",
+    "name": "CorEnergy Infrastructure Trust",
+    "sector": "specialty",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "PW",
+    "name": "Power REIT",
+    "sector": "specialty",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "NLCP",
+    "name": "NewLake Capital Partners",
+    "sector": "specialty",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "CONE",
+    "name": "CyrusOne",
+    "sector": "data-center",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "DBRG",
+    "name": "DigitalBridge Group",
+    "sector": "data-center",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "BIP",
+    "name": "Brookfield Infrastructure Partners",
+    "sector": "specialty",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "LFT",
+    "name": "Lument Finance Trust",
+    "sector": "mortgage",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "SACH",
+    "name": "Sachem Capital Corp",
+    "sector": "mortgage",
+    "releaseDate": "Aug 4, 2026",
+    "callDate": "Aug 4, 2026, 8:30a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "BRMK",
+    "name": "Broadmark Realty Capital",
+    "sector": "mortgage",
+    "releaseDate": "TBD",
+    "callDate": "TBD",
+    "exchange": "NYSE",
+    "status": "EST",
+    "notes": ""
+  },
+  {
+    "ticker": "ABR",
+    "name": "Arbor Realty Trust",
+    "sector": "mortgage",
+    "releaseDate": "Jul 31, 2026",
+    "callDate": "Jul 31, 2026, 4p ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "REFI",
+    "name": "Chicago Atlantic Real Estate Finance",
+    "sector": "mortgage",
+    "releaseDate": "Aug 11, 2026",
+    "callDate": "Aug 11, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "AFCG",
+    "name": "AFC Gamma",
+    "sector": "mortgage",
+    "releaseDate": "Aug 13, 2026",
+    "callDate": "Aug 13, 2026, 4p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": ""
+  },
+  {
+    "ticker": "FBRT",
+    "name": "Franklin BSP Realty Trust",
+    "sector": "mortgage",
+    "releaseDate": "Jul 30, 2026",
+    "callDate": "Jul 30, 2026, 9a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": ""
+  }
+]

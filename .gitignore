@@ -35,6 +35,7 @@ yarn-error.log*
 
 # generated reports
 data/earnings-refresh-report.json
+data/earnings-refresh-report-q2.json
 
 # vercel
 .vercel
@@ -42,3 +43,5 @@ data/earnings-refresh-report.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { REIT_ROWS } from "@/lib/reits";
+import { REIT_ROWS_Q2 } from "@/lib/reits-q2";
 import { SECTOR_LABELS } from "@/lib/sector-labels";
 import { seekingAlphaUrl } from "@/lib/links";
 import { formatDateMdyFromIso, formatTimeAmPmFromHms, tzLabel } from "@/lib/format";
@@ -16,7 +16,11 @@ import {
 import type { ReitRow, ReviewerId, ReviewFlags } from "@/lib/types";
 import { EMPTY_REVIEW } from "@/lib/types";
 
-const LOCAL_STORAGE_KEY = "dexus_reit_q1_2026_review";
+const LOCAL_STORAGE_KEY = "dexus_reit_q2_2026_review";
+
+// Supabase table names for Q2 — these must be created in Supabase separately from Q1 tables.
+const TABLE_REVIEW = "reit_review_q2";
+const TABLE_OVERRIDE = "reit_event_override_q2";
 
 type UiRow = ReitRow & { callStatus?: "CONF" | "EST" | null };
 
@@ -52,7 +56,7 @@ function saveLocalReview(map: Record<string, ReviewFlags>) {
   }
 }
 
-export function EarningsCalendar() {
+export function EarningsCalendarQ2() {
   const supabase = useMemo(() => getSupabaseBrowser(), []);
   const [reviewMap, setReviewMap] = useState<Record<string, ReviewFlags>>(() =>
     loadLocalReview(),
@@ -97,7 +101,7 @@ export function EarningsCalendar() {
     let cancelled = false;
 
     (async () => {
-      const { data, error } = await supabase.from("reit_review").select("*");
+      const { data, error } = await supabase.from(TABLE_REVIEW).select("*");
       if (cancelled) return;
       if (error) {
         console.error(error);
@@ -110,7 +114,7 @@ export function EarningsCalendar() {
 
     (async () => {
       const { data, error } = await supabase
-        .from("reit_event_override")
+        .from(TABLE_OVERRIDE)
         .select("*");
       if (cancelled) return;
       if (error) {
@@ -122,10 +126,10 @@ export function EarningsCalendar() {
     })();
 
     const channel = supabase
-      .channel("reit_review_changes")
+      .channel("reit_review_q2_changes")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "reit_review" },
+        { event: "*", schema: "public", table: TABLE_REVIEW },
         (payload) => {
           if (payload.eventType === "DELETE") {
             const oldRow = payload.old as Partial<ReitReviewRow> | null;
@@ -149,10 +153,10 @@ export function EarningsCalendar() {
       .subscribe();
 
     const overridesChannel = supabase
-      .channel("reit_event_override_changes")
+      .channel("reit_event_override_q2_changes")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "reit_event_override" },
+        { event: "*", schema: "public", table: TABLE_OVERRIDE },
         (payload) => {
           if (payload.eventType === "DELETE") {
             const oldRow = payload.old as Partial<ReitEventOverrideRow> | null;
@@ -199,11 +203,9 @@ export function EarningsCalendar() {
   );
 
   const mergedRows = useMemo<UiRow[]>(() => {
-    // Apply overrides first
-    const rows: UiRow[] = REIT_ROWS.map((r) => {
+    const rows: UiRow[] = REIT_ROWS_Q2.map((r) => {
       const o = overrides[r.ticker];
       if (!o) return r;
-      // Prefer structured v2 overrides when present; else fall back to legacy text fields.
       const releaseDate =
         o.release_date_d ? formatDateMdyFromIso(o.release_date_d) : o.release_date ?? r.releaseDate;
       const releaseStatus = o.release_status ?? o.status ?? r.status;
@@ -225,7 +227,6 @@ export function EarningsCalendar() {
       };
     });
 
-    // Sort using the merged (override-applied) values so overridden dates sort correctly
     const key = sortCol !== null ? COL_TO_SORT[sortCol] : "releaseDate";
     if (!key) return rows;
     const isDateCol = key === "releaseDate" || key === "callDate";
@@ -273,18 +274,17 @@ export function EarningsCalendar() {
   }, [mergedRows, reviewMap]);
 
   const [editing, setEditing] = useState<ReitRow | null>(null);
-  const [editReleaseDate, setEditReleaseDate] = useState(""); // YYYY-MM-DD
+  const [editReleaseDate, setEditReleaseDate] = useState("");
   const [editReleaseStatus, setEditReleaseStatus] = useState<"CONF" | "EST">("EST");
   const [editReleaseNotes, setEditReleaseNotes] = useState("");
 
-  const [editCallDate, setEditCallDate] = useState(""); // YYYY-MM-DD
-  const [editCallTime, setEditCallTime] = useState(""); // HH:MM
+  const [editCallDate, setEditCallDate] = useState("");
+  const [editCallTime, setEditCallTime] = useState("");
   const [editCallTz, setEditCallTz] = useState<"ET" | "CT" | "PT">("ET");
   const [editCallStatus, setEditCallStatus] = useState<"CONF" | "EST">("EST");
 
   const startEdit = (row: ReitRow) => {
     setEditing(row);
-    // Best-effort: if row came from overrides, prefer those stored values from overrides map.
     const o = overrides[row.ticker];
     setEditReleaseDate(o?.release_date_d ?? "");
     setEditReleaseStatus((o?.release_status ?? row.status) as "CONF" | "EST");
@@ -304,7 +304,7 @@ export function EarningsCalendar() {
       return;
     }
     const { error } = await supabase
-      .from("reit_event_override")
+      .from(TABLE_OVERRIDE)
       .delete()
       .eq("ticker", ticker);
     if (error) {
@@ -322,7 +322,6 @@ export function EarningsCalendar() {
     const ticker = editing.ticker;
     const payload: ReitEventOverrideRow = {
       ticker,
-      // legacy fields (kept for backwards compatibility; we’ll also populate these for display)
       release_date: editReleaseDate ? formatDateMdyFromIso(editReleaseDate) : null,
       call_date:
         editCallDate && editCallTime
@@ -331,7 +330,6 @@ export function EarningsCalendar() {
       status: editReleaseStatus,
       notes: editReleaseNotes.trim() || null,
 
-      // structured v2
       release_date_d: editReleaseDate || null,
       release_status: editReleaseStatus,
       release_notes: editReleaseNotes.trim() || null,
@@ -349,7 +347,7 @@ export function EarningsCalendar() {
       return;
     }
 
-    const { error } = await supabase.from("reit_event_override").upsert(
+    const { error } = await supabase.from(TABLE_OVERRIDE).upsert(
       {
         ...payload,
         updated_at: new Date().toISOString(),
@@ -385,7 +383,7 @@ export function EarningsCalendar() {
     }
 
     const { error } = nextVal
-      ? await supabase.from("reit_review").upsert(
+      ? await supabase.from(TABLE_REVIEW).upsert(
           {
             ticker,
             reviewer,
@@ -395,7 +393,7 @@ export function EarningsCalendar() {
           { onConflict: "ticker,reviewer" },
         )
       : await supabase
-          .from("reit_review")
+          .from(TABLE_REVIEW)
           .delete()
           .eq("ticker", ticker)
           .eq("reviewer", reviewer);
@@ -421,23 +419,23 @@ export function EarningsCalendar() {
         <div className="config-banner" role="status">
           <strong>Supabase error:</strong> {supabaseError}
           <br />
-          Chips will still work locally, but won’t sync until this is fixed.
+          Chips will still work locally, but won't sync until this is fixed.
         </div>
       ) : null}
 
       <header>
         <div>
           <h1>
-            NORTH AMERICAN REIT <span>Q1 2026</span> EARNINGS CALENDAR
+            NORTH AMERICAN REIT <span>Q2 2026</span> EARNINGS CALENDAR
           </h1>
           <div className="subhead">
-            Reporting period: January 1 – March 31, 2026 &nbsp;|&nbsp; Releases:
-            April–May 2026
+            Reporting period: April 1 – June 30, 2026 &nbsp;|&nbsp; Releases:
+            July–August 2026
           </div>
         </div>
         <div className="meta">
-          <Link href="/q2-2026" className="ics-link" style={{ fontSize: 10, fontWeight: 600 }}>
-            Q2 2026 →
+          <Link href="/" className="ics-link" style={{ fontSize: 10, fontWeight: 600 }}>
+            ← Q1 2026
           </Link>
           <br />
           <Link href="/bmo-conference" className="ics-link" style={{ fontSize: 10, fontWeight: 600 }}>
@@ -448,7 +446,7 @@ export function EarningsCalendar() {
             NAREIT REITweek →
           </Link>
           <br />
-          Generated: April 14, 2026
+          Generated: June 19, 2026
           <br />
           Sources: Company IR pages, SEC 8-Ks, press releases
           <br />
@@ -534,7 +532,6 @@ export function EarningsCalendar() {
           </div>
         </div>
       </div>
-
 
       <table>
         <colgroup>
@@ -816,7 +813,7 @@ export function EarningsCalendar() {
         <strong>Seeking Alpha</strong> opens the symbol earnings hub. &nbsp;|&nbsp;
         <strong>CONF</strong> = date confirmed via SEC 8-K / company press release
         &nbsp;·&nbsp;
-        <strong>EST</strong> = estimated from historical reporting patterns
+        <strong>EST</strong> = estimated from historical reporting patterns.
         Call times in ET unless noted.
       </div>
     </div>
