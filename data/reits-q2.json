@@ -1980,7 +1980,7 @@
     "notes": "CAD reporting"
   },
   {
-    "ticker": "GO",
+    "ticker": "GO.U",
     "name": "Go Residential REIT",
     "sector": "canadian",
     "releaseDate": "TBD",
@@ -2022,9 +2022,39 @@
   {
     "ticker": "CSQR",
     "name": "Csquare, Inc.",
-    "sector": "specialty",
+    "sector": "data-center",
     "releaseDate": "Aug 6, 2026",
     "callDate": "Aug 6, 2026, 4:00p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "After close"
+  },
+  {
+    "ticker": "NUAI",
+    "name": "New Era Energy & Digital, Inc.",
+    "sector": "data-center",
+    "releaseDate": "Aug 14, 2026",
+    "callDate": "TBD",
+    "exchange": "NASDAQ",
+    "status": "EST",
+    "notes": null
+  },
+  {
+    "ticker": "WULF",
+    "name": "TeraWulf Inc.",
+    "sector": "data-center",
+    "releaseDate": "Aug 5, 2026",
+    "callDate": "Aug 5, 2026, 4:00p ET",
+    "exchange": "NASDAQ",
+    "status": "CONF",
+    "notes": "Before open"
+  },
+  {
+    "ticker": "APLD",
+    "name": "Applied Digital Corporation",
+    "sector": "data-center",
+    "releaseDate": "Jul 27, 2026",
+    "callDate": "Jul 27, 2026, 5:00p ET",
     "exchange": "NASDAQ",
     "status": "CONF",
     "notes": "After close"
