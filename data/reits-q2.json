@@ -1430,16 +1430,6 @@
     "notes": ""
   },
   {
-    "ticker": "RPT",
-    "name": "RPT Realty",
-    "sector": "retail",
-    "releaseDate": "Jul 28, 2026",
-    "callDate": "Jul 28, 2026, 5p ET",
-    "exchange": "NYSE",
-    "status": "CONF",
-    "notes": ""
-  },
-  {
     "ticker": "CURB",
     "name": "Curbline Properties",
     "sector": "retail",
@@ -1677,16 +1667,6 @@
     "callDate": "Aug 5, 2026, 4p ET",
     "exchange": "NASDAQ",
     "status": "CONF",
-    "notes": ""
-  },
-  {
-    "ticker": "NSA",
-    "name": "National Storage Affiliates",
-    "sector": "self-storage",
-    "releaseDate": "Aug 3, 2026",
-    "callDate": "Aug 3, 2026, 4p ET",
-    "exchange": "NYSE",
-    "status": "EST",
     "notes": ""
   },
   {
