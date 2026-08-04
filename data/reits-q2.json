@@ -2010,9 +2010,9 @@
     "notes": "After close"
   },
   {
-    "ticker": "DXDC",
-    "name": "DXDC",
-    "sector": "specialty",
+    "ticker": "BXDC",
+    "name": "Blackstone Digital Infrastructure Trust Inc.",
+    "sector": "data-center",
     "releaseDate": "TBD",
     "callDate": "TBD",
     "exchange": "NYSE",
