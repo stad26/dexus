@@ -1470,16 +1470,6 @@
     "notes": ""
   },
   {
-    "ticker": "WHLR",
-    "name": "Wheeler REIT",
-    "sector": "retail",
-    "releaseDate": "TBD",
-    "callDate": "TBD",
-    "exchange": "NASDAQ",
-    "status": "EST",
-    "notes": ""
-  },
-  {
     "ticker": "IVT",
     "name": "InvenTrust Properties",
     "sector": "retail",
