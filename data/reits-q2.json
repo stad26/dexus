@@ -2018,5 +2018,15 @@
     "exchange": "NASDAQ",
     "status": "CONF",
     "notes": "After close"
+  },
+  {
+    "ticker": "XRN",
+    "name": "Chiron Real Estate Inc.",
+    "sector": "healthcare",
+    "releaseDate": "Aug 6, 2026",
+    "callDate": "Aug 6, 2026, 9:00a ET",
+    "exchange": "NYSE",
+    "status": "CONF",
+    "notes": null
   }
 ]
